@@ -1,0 +1,23 @@
+{
+   "name": "wc2018-finals-widget",
+   "description": "Description of wc2018-finals-widget",
+   "version": "1.0.0",
+   "main": "dist/index.js",
+   "scripts": {
+      "clean": "kambi-widgets-cli clean",
+      "start": "kambi-widgets-cli start",
+      "build": "kambi-widgets-cli build",
+      "test": "kambi-widgets-cli test"
+   },
+   "dependencies": {
+      "kambi-widget-components": "^1.16.0",
+      "kambi-widget-core-library": "^3.12.0",
+      "prop-types": "^15.6.0",
+      "react": "^16.2.0",
+      "react-dom": "^16.2.0"
+   },
+   "devDependencies": {
+      "kambi-widget-build-tools": "^5.0.2"
+   },
+   "useHttps": true
+}
