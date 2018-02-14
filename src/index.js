@@ -9,16 +9,17 @@ import EventWidget from './js/Components/EventWidget'
 import './scss/app.scss'
 import './index.html'
 
-// default criterion ids - right now these are just random will be substitued on what we'll agree
-const defaultCriterionIds = [2104811968, 2104814598, 2104814607, 2104814684]
-const MAX_CRITERION_IDS = 4;
-
+let finalEvent
 // Initialize kambi's api
 // http://kambi-sportsbook-widgets.github.io/widget-core-library/module-coreLibrary.html#.init__anchor
 coreLibrary
   .init({
     title: 'World Cup 2018 Finals',
-    betOffersCriterionIds: [], // array with up to 4 numbers, find out the criterionIds of the mock betoffers to use as default
+    widgetTrackingName: 'wc2018-finals',
+    additionalBetOffersCriterionIds: [
+      1001159926, // Total goals
+      1001642858  // both teams to score
+    ], // array with up to 2 numbers, find out the criterionIds of the mock betoffers to use as default
     flagBaseUrl: "", // string with the base URL, concatenate with the lowecased englishName of the team + ".svg" to generate final URL (replace spaces with _)
     backgroundUrl: "", // string with the image to use as background-image
     iconUrl: "" // string with the icon URL, should have a default if absent
@@ -34,10 +35,7 @@ coreLibrary
       const games = events.events.filter(event => {
         return event.event.type === 'ET_MATCH'
       })
-      // Here we should figure out which events we want to display
-      // for now we just grab the first one
-
-      // Get the event with all its betoffers (getEbent only returns one betoffer)
+      // Get all betoffers of the first event on the chronological list(getEvent only returns one betoffer)
       // http://kambi-sportsbook-widgets.github.io/widget-core-library/module-offeringModule.html#.getLiveEventsByFilter__anchor
       return offeringModule.getEvent(games[0].event.id)
     }
@@ -53,21 +51,43 @@ coreLibrary
   })
   .then(event => {
     // Filter bet offers based on criterion ids provided in params
-    let criterionIds = [...coreLibrary.args.betOffersCriterionIds]
-    let i = -1
-    while (criterionIds.length < MAX_CRITERION_IDS && i < defaultCriterionIds.length) {
-      i++
-      if (criterionIds.indexOf(defaultCriterionIds[i]) >= 0) { continue }
-      criterionIds.push(defaultCriterionIds[i])
-    }
+    let newBetOffers = []
+    // Add main offer
+    newBetOffers.push(event.betOffers.find(offer => offer.main))
 
-    event.betOffers = event.betOffers.filter((item) => {
-      return criterionIds.indexOf(item.id) >= 0
+    // Add selected bet offers
+    const criterionIds = coreLibrary.args.additionalBetOffersCriterionIds
+    criterionIds.forEach(crit => {
+      let result = event.betOffers.find(offer => offer.criterion.id === crit)
+      if (result) newBetOffers.push(result)
     })
+
+    event.betOffers = newBetOffers
+    finalEvent = event
+
+    return offeringModule.getEventsByFilter('/football/world_cup_2018/all/all/competitions')
+  })
+  .then(tournamentEvents => {
+    // Extract betting offer for Playing countries
+    const countries = finalEvent.event.englishName.split('-')
+      .map(item => item.trim())
+    const competitionEvent = tournamentEvents.events.find(event => {
+      return event.betOffers.length > 0?
+        event.betOffers[0].criterion.id === 1004240929: // Tounament Position
+        false
+    })
+
+    const tournamentBetOffer = competitionEvent.betOffers[0]
+    tournamentBetOffer.outcomes = tournamentBetOffer.outcomes.filter(offer => {
+      return countries.indexOf(offer.englishLabel) >= 0
+    })
+    // Add new bet offers to event object to pass to React
+    finalEvent.betOffers.splice(1, 0, tournamentBetOffer)
+
     // Renders the widget
     ReactDOM.render(
       React.createElement(EventWidget, {
-        event: event,
+        event: finalEvent,
         title: coreLibrary.args.title,
       }),
       document.getElementById('root')
