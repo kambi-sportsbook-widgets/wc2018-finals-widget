@@ -23,7 +23,7 @@ coreLibrary
     // flagBaseUrl: "", // string with the base URL, concatenate with the lowecased englishName of the team + ".svg" to generate final URL (replace spaces with _)
     // iconUrl: "" // string with the icon URL, should have a default if absent
     backgroundUrl: 'assets/overview-bw-bg-desktop.jpg', // string with the image to use as background-image
-    blendWidthOperatorColor: true, // determines if background should be blended with operator color. (Normally not wanted if providing own background image)
+    blendWithOperatorColor: true, // determines if background should be blended with operator color. (Normally not wanted if providing own background image)
   })
   .then(() => {
     return getWCEventData(coreLibrary.args.additionalBetOffersCriterionIds, '/football/world_cup_2018')
@@ -35,7 +35,7 @@ coreLibrary
       React.createElement(EventWidget, {
         event: event,
         backgroundUrl: coreLibrary.args.backgroundUrl,
-        blendWidthOperatorColor: coreLibrary.args.blendWidthOperatorColor,
+        blendWithOperatorColor: coreLibrary.args.blendWithOperatorColor,
         flagBaseUrl: coreLibrary.args.flagBaseUrl,
         iconUrl: coreLibrary.args.iconUrl,
       }),

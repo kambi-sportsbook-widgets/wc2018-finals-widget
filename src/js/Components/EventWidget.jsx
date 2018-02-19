@@ -56,11 +56,11 @@ class EventWidget extends React.Component {
       <div >
         {/*
          * @property backgroundUrl {String} provides path to backgroundImage
-         * @property blendWidthOperatorColor {Boolean} determines if background should be blended with operator color. (Normally not wanted if providing own background image)
+         * @property blendWithOperatorColor {Boolean} determines if background should be blended with operator color. (Normally not wanted if providing own background image)
         */}
         <BlendedBackground
           backgroundUrl={this.props.backgroundUrl}
-          blendWidthOperatorColor={this.props.blendWidthOperatorColor}
+          blendWithOperatorColor={this.props.blendWithOperatorColor}
         />
         <div className={styles.container}>
           <BetOffers
@@ -86,7 +86,7 @@ class EventWidget extends React.Component {
 EventWidget.propTypes = {
   event: PropTypes.object.isRequired,
   backgroundUrl: PropTypes.string.isRequired,
-  blendWidthOperatorColor: PropTypes.bool.isRequired,
+  blendWithOperatorColor: PropTypes.bool.isRequired,
   flagBaseUrl: PropTypes.string,
   iconUrl: PropTypes.string,
 }

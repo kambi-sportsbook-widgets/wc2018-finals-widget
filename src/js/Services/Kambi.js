@@ -17,15 +17,11 @@ const getWCEventData = (additionalBetOffersCriterionIds, baseFilter) => {
       if (events.events) {
         // get matches only
         const games = events.events.filter(event => {
-          return event.event.type === 'ET_MATCH'
+          return event.event.type === 'ET_MATCH' || event.event.state('NOT_STARTED')
         })
         // Get all betoffers of the first event on the chronological list(getEvent only returns one betoffer)
         // http://kambi-sportsbook-widgets.github.io/widget-core-library/module-offeringModule.html#.getLiveEventsByFilter__anchor
         return offeringModule.getEvent(games[0].event.id)
-      }
-      // Check that the event type is 'ET_MATCH' and has betoffers
-      if (events.event.type === 'ET_MATCH' && events.event.betoffers.length) {
-        return events
       }
 
       throw new Error(
