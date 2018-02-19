@@ -1,8 +1,60 @@
 .participants {
-  text-align: center;
+  justify-content: center;
   cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-basis: 30%;
 }
 
 .participants-font-size {
   font-size: large;
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-basis: 30%;
+
+  :global(.kw-custom-logo-large-type){
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-basis: 30%;
+  }
+
+  .label {
+    text-align: center;
+    font-size: 130%;
+    font-weight: 500;
+  }
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 1em;
+
+  :global(.kw-custom-logo-large-type){
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-basis: 50%;
+    height: 70px;
+  }
+
+  .label, .sublabel {
+    margin: 0;
+    text-align: center;
+  }
+  .label {
+    margin-top: .5em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .participants {
+    order: -1;
+    flex-basis: 100%;
+  }
 }

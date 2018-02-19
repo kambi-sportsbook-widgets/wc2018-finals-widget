@@ -1,6 +1,15 @@
+.betoffer-container {
+  flex-basis: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .event {
   display: flex;
   flex-direction: column;
+  position: relative;
+  margin-top: .7em;
 }
 
 .outcomes {
@@ -14,8 +23,23 @@
   flex-basis: auto;
   padding: 3px 5px;
   flex-grow: 1;
+
+  :global(.KambiWidget-outcome__flexwrap) {
+    justify-content: space-around;
+  }
+
+  :global(.KambiWidget-outcome__label-wrapper) {
+    flex: none;
+  }
 }
 
 .betoffer-label {
-  text-align: center;
+  text-align: left;
+  padding-left: .5em;
+}
+
+@media screen and (max-width: 768px) {
+  .betoffer-container {
+    flex-basis: 50%;
+  }
 }

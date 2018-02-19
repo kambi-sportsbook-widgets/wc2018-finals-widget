@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Header } from 'kambi-widget-components'
+import { BlendedBackground } from 'kambi-widget-components'
 import { widgetModule, translationModule } from 'kambi-widget-core-library'
+import styles from './EventWidget.scss'
 import Participants from './Participants'
 import BetOffers from './BetOffers'
 
@@ -46,30 +47,48 @@ class EventWidget extends React.Component {
   }
 
   render() {
+
+    let sliceIndex = this.props.event.betOffers.length > 2? 2: 1
+    const betOffersLeft = this.props.event.betOffers.slice(0, sliceIndex)
+    const betOffersRight = this.props.event.betOffers.slice(sliceIndex)
+
     return (
-      <div className="KambiWidget-card-background-color">
-        {/* Calls the header component
-             https://github.com/kambi-sportsbook-widgets/widget-components/blob/master/README.md
-             */}
-        <Header>{this.props.title + liveLabel(this.props.event)}</Header>
-        <Participants
-          homeName={this.props.event.event.homeName}
-          awayName={this.props.event.event.awayName}
-          onClick={navigateToEvent.bind(null, this.props.event)}
+      <div >
+        {/*
+         * @property backgroundUrl {String} provides path to backgroundImage
+         * @property blendWidthOperatorColor {Boolean} determines if background should be blended with operator color. (Normally not wanted if providing own background image)
+        */}
+        <BlendedBackground
+          backgroundUrl={this.props.backgroundUrl}
+          blendWidthOperatorColor={this.props.blendWidthOperatorColor}
         />
-        <BetOffers
-          betOffers={this.props.event.betOffers}
-          event={this.props.event.event}
-        />
+        <div className={styles.container}>
+          <BetOffers
+            betOffers={betOffersLeft}
+            event={this.props.event.event}
+          />
+          <Participants
+            event={this.props.event.event}
+            flagBaseUrl={this.props.flagBaseUrl}
+            iconUrl={this.props.iconUrl}
+            onClick={navigateToEvent.bind(null, this.props.event)}
+          />
+          <BetOffers
+            betOffers={betOffersRight}
+            event={this.props.event.event}
+          />
+        </div>
       </div>
     )
   }
 }
 
 EventWidget.propTypes = {
-  event: PropTypes.object,
-
-  title: PropTypes.string.isRequired,
+  event: PropTypes.object.isRequired,
+  backgroundUrl: PropTypes.string.isRequired,
+  blendWidthOperatorColor: PropTypes.bool.isRequired,
+  flagBaseUrl: PropTypes.string,
+  iconUrl: PropTypes.string,
 }
 
 export default EventWidget

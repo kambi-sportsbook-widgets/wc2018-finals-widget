@@ -1,22 +1,58 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { translationModule } from 'kambi-widget-core-library'
+import DateComponent from './Date'
+
+const t = translationModule.getTranslation.bind(translationModule)
 import styles from './Participants.scss'
 
-const Participants = ({ homeName, awayName, onClick }) => {
+const Participants = ({ event, flagBaseUrl, iconUrl, onClick }) => {
+  // Generates country icon url
+  function generateCountryFlagUrl(country) {
+    const normalisedCountryName = country.toLowerCase().replace(/\s/g, '_')
+    return flagBaseUrl? `${flagBaseUrl}/${normalisedCountryName}.svg`: ''
+  }
+
   return (
     <div className={styles.participants} onClick={onClick}>
-      <span className={styles['participants-font-size']}> {homeName} </span>
-      <span className={styles['participants-font-size']}> - </span>
-      <span className={styles['participants-font-size']}> {awayName} </span>
+      <div className={styles.team}>
+        <i
+          className="kw-custom-logo-large-type"
+          style={{
+            backgroundImage: `url("${generateCountryFlagUrl(event.countriesEnglishNames[0])}")`,
+          }}
+        />
+        <h2 className={styles.label}>{event.homeName}</h2>
+      </div>
+      <div className={styles.logo}>
+        <i
+          className="kw-custom-logo-large-type"
+          style={{
+            backgroundImage: `url("${iconUrl}")`,
+          }}
+        />
+        <h3 className={styles.label}>{t('wc2018').toUpperCase()}</h3>
+        <p className={styles.sublabel}>{t('russia').toUpperCase()}</p>
+
+        <DateComponent date={event.start} short={true} />
+      </div>
+      <div className={styles.team}>
+        <i
+          className="kw-custom-logo-large-type"
+          style={{
+            backgroundImage: `url("${generateCountryFlagUrl(event.countriesEnglishNames[1])}")`,
+          }}
+        />
+        <h2 className={styles.label}>{event.awayName}</h2>
+      </div>
     </div>
   )
 }
 
 Participants.propTypes = {
-  homeName: PropTypes.string.isRequired,
-
-  awayName: PropTypes.string.isRequired,
-
+  event: PropTypes.object.isRequired,
+  flagBaseUrl: PropTypes.string,
+  iconUrl: PropTypes.string,
   onClick: PropTypes.func.isRequired,
 }
 

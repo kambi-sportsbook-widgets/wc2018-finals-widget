@@ -5,7 +5,7 @@ import styles from './BetOffers.scss'
 
 const BetOffers = ({ event, betOffers }) => {
   return (
-    <div>
+    <div className={styles['betoffer-container']}>
       {betOffers.map(betOffer => {
         if (betOffer.outcomes && betOffer.outcomes.length) {
           return (
@@ -19,7 +19,7 @@ const BetOffers = ({ event, betOffers }) => {
                     {/* Outcome button component
                                   https://github.com/kambi-sportsbook-widgets/widget-components/blob/master/README.md
                                  */}
-                    <OutcomeButton outcome={outcome} event={event} />
+                    <OutcomeButton outcome={outcome} outlineStyle={true} event={event} />
                   </div>
                 ))}
               </div>

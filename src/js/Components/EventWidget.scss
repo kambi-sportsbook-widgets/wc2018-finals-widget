@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #fff;
+  text-shadow: 0 0 2px #000;
+  margin: 1em 0;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-wrap: wrap;
+  }
+}
