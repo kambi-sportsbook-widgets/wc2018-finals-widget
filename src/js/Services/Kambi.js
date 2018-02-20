@@ -54,7 +54,8 @@ const getWCEventData = (additionalBetOffersCriterionIds, baseFilter) => {
 
       const competitionEvent = tournamentEvents.events.find(event => {
         return event.betOffers.length > 0?
-          event.betOffers[0].criterion.id === 1004240929: // Tounament Position
+          event.betOffers[0].criterion.id === 1004240929: // Tounament Position - WC
+          // event.betOffers[0].criterion.id === 1001221607: // Tounament Position - CL
           false
       })
 

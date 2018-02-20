@@ -35,6 +35,7 @@
   flex-direction: column;
   justify-content: center;
   margin: 0 1em;
+  text-align: center;
 
   :global(.kw-custom-logo-large-type){
     background-position: center;
@@ -45,10 +46,14 @@
 
   .label, .sublabel {
     margin: 0;
-    text-align: center;
   }
+
   .label {
     margin-top: .5em;
+  }
+
+  .sublabel {
+    font-size: 90%;
   }
 }
 

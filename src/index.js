@@ -27,6 +27,7 @@ coreLibrary
   })
   .then(() => {
     return getWCEventData(coreLibrary.args.additionalBetOffersCriterionIds, '/football/world_cup_2018')
+    // return getWCEventData(coreLibrary.args.additionalBetOffersCriterionIds, '/football/champions_league')
   })
   .then(event => {
 
