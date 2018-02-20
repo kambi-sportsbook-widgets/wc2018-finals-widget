@@ -13,36 +13,43 @@ const Participants = ({ event, flagBaseUrl, iconUrl, onClick }) => {
     return flagBaseUrl? `${flagBaseUrl}/${normalisedCountryName}.svg`: ''
   }
 
+  const homeFlagIcon = flagBaseUrl?
+    <i
+      className="kw-custom-logo-large-type"
+      style={{
+        backgroundImage: `url("${generateCountryFlagUrl(event.countriesEnglishNames[0])}")`,
+      }}
+    />: <i></i>
+  const awayFlagIcon = flagBaseUrl?
+    <i
+      className="kw-custom-logo-large-type"
+      style={{
+        backgroundImage: `url("${generateCountryFlagUrl(event.countriesEnglishNames[1])}")`,
+      }}
+    />: <i></i>
+  const logoIcon = iconUrl?
+  <i
+    className="kw-custom-logo-large-type"
+    style={{
+      backgroundImage: `url("${iconUrl}")`,
+    }}
+  />: <i></i>
+
   return (
     <div className={styles.participants} onClick={onClick}>
       <div className={styles.team}>
-        <i
-          className="kw-custom-logo-large-type"
-          style={{
-            backgroundImage: `url("${generateCountryFlagUrl(event.countriesEnglishNames[0])}")`,
-          }}
-        />
+        {homeFlagIcon}
         <h2 className={styles.label}>{event.homeName}</h2>
       </div>
       <div className={styles.logo}>
-        <i
-          className="kw-custom-logo-large-type"
-          style={{
-            backgroundImage: `url("${iconUrl}")`,
-          }}
-        />
+        {logoIcon}
         <h3 className={styles.label}>{t('wc2018').toUpperCase()}</h3>
         <p className={styles.sublabel}>{t('russia').toUpperCase()}</p>
 
         <DateComponent date={event.start} short={true} />
       </div>
       <div className={styles.team}>
-        <i
-          className="kw-custom-logo-large-type"
-          style={{
-            backgroundImage: `url("${generateCountryFlagUrl(event.countriesEnglishNames[1])}")`,
-          }}
-        />
+        {awayFlagIcon}
         <h2 className={styles.label}>{event.awayName}</h2>
       </div>
     </div>
