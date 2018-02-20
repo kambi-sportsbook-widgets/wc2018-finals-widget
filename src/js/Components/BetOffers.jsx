@@ -8,8 +8,9 @@ const BetOffers = ({ event, betOffers }) => {
     <div className={styles['betoffer-container']}>
       {betOffers.map(betOffer => {
         if (betOffer.outcomes && betOffer.outcomes.length) {
+          const mainClass = betOffer.main? ' main': ''
           return (
-            <div className={styles.event} key={betOffer.id}>
+            <div className={styles.event + mainClass} key={betOffer.id}>
               <span className={styles['betoffer-label']}>
                 {betOffer.criterion.label}
               </span>

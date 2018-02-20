@@ -40,6 +40,10 @@
 
 @media screen and (max-width: 768px) {
   .betoffer-container {
-    flex-basis: 50%;
+    flex-basis: 100%;
+  }
+
+  .event:not(:global(.main)) {
+    display: none;
   }
 }
