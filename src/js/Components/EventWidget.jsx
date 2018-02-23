@@ -47,21 +47,12 @@ class EventWidget extends React.Component {
   }
 
   render() {
-
     let sliceIndex = this.props.event.betOffers.length > 2? 2: 1
     const betOffersLeft = this.props.event.betOffers.slice(0, sliceIndex)
     const betOffersRight = this.props.event.betOffers.slice(sliceIndex)
 
     return (
       <div >
-        {/*
-         * @property backgroundUrl {String} provides path to backgroundImage
-         * @property blendWithOperatorColor {Boolean} determines if background should be blended with operator color. (Normally not wanted if providing own background image)
-        */}
-        <BlendedBackground
-          backgroundUrl={this.props.backgroundUrl}
-          blendWithOperatorColor={this.props.blendWithOperatorColor}
-        />
         <div className={styles.container}>
           <BetOffers
             betOffers={betOffersLeft}
@@ -85,8 +76,6 @@ class EventWidget extends React.Component {
 
 EventWidget.propTypes = {
   event: PropTypes.object.isRequired,
-  backgroundUrl: PropTypes.string.isRequired,
-  blendWithOperatorColor: PropTypes.bool.isRequired,
   flagBaseUrl: PropTypes.string,
   iconUrl: PropTypes.string,
 }

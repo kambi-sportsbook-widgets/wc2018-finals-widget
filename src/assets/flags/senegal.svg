@@ -4,9 +4,9 @@
 	 viewBox="0 0 48 48" style="enable-background:new 0 0 48 48;" xml:space="preserve">
 <style type="text/css">
 	.st0{clip-path:url(#SVGID_2_);}
-	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#0456BD;}
+	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#FFF200;}
 	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#FF1612;}
-	.st3{fill-rule:evenodd;clip-rule:evenodd;fill:#F0F0F0;}
+	.st3{fill-rule:evenodd;clip-rule:evenodd;fill:#46B61C;}
 </style>
 <g>
 	<defs>
@@ -16,9 +16,10 @@
 		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
 	</clipPath>
 	<g class="st0">
-		<polygon class="st1" points="59.6,31.9 59.6,16.1 -11.6,16.1 -11.6,31.9 59.6,31.9 		"/>
-		<polygon class="st2" points="-11.6,47.8 59.6,47.8 59.6,31.9 -11.6,31.9 -11.6,47.8 		"/>
-		<polygon class="st3" points="-11.6,16.1 59.6,16.1 59.6,0.2 -11.6,0.2 -11.6,16.1 		"/>
+		<polygon class="st1" points="12,47.8 35.8,47.8 35.8,0.2 12,0.2 12,47.8 		"/>
+		<polygon class="st2" points="35.8,47.8 59.6,47.8 59.6,0.2 35.8,0.2 35.8,47.8 		"/>
+		<path class="st3" d="M-11.7,47.8H12V0.2h-23.8V47.8L-11.7,47.8z M23.9,16.1l1.8,5.5h5.8l-4.7,3.4l1.8,5.5L23.9,27l-4.7,3.4
+			l1.8-5.5l-4.7-3.4h5.8L23.9,16.1L23.9,16.1z"/>
 	</g>
 </g>
 </svg>

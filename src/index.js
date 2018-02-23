@@ -4,7 +4,7 @@ import {
   coreLibrary,
   widgetModule,
 } from 'kambi-widget-core-library'
-import EventWidget from './js/Components/EventWidget'
+import MainComponent from './js/Components/MainComponent'
 
 import getWCEventData from './js/Services/Kambi'
 
@@ -26,15 +26,13 @@ coreLibrary
     blendWithOperatorColor: true, // determines if background should be blended with operator color. (Normally not wanted if providing own background image)
   })
   .then(() => {
-    return getWCEventData(coreLibrary.args.additionalBetOffersCriterionIds, '/football/world_cup_2018')
-    // return getWCEventData(coreLibrary.args.additionalBetOffersCriterionIds, '/football/champions_league')
+    return getWCEventData(coreLibrary.args.additionalBetOffersCriterionIds)
   })
-  .then(event => {
-
+  .then(data => {
     // Renders the widget
     ReactDOM.render(
-      React.createElement(EventWidget, {
-        event: event,
+      React.createElement(MainComponent, {
+        data: data,
         backgroundUrl: coreLibrary.args.backgroundUrl,
         blendWithOperatorColor: coreLibrary.args.blendWithOperatorColor,
         flagBaseUrl: coreLibrary.args.flagBaseUrl,
