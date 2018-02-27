@@ -9,16 +9,12 @@ import {
  * @property additionalBetOffersCriterionIds {Array.<number>} an array containing up to two criterion ids to be displayed in the widget
  * @returns {Promise} promise of a Kambi event object containing only required betoffers
 */
-const getWCEventData = (additionalBetOffersCriterionIds) => {
+const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
   let finalEvent = []
   let eventType
-  const BASE_FILTER = '/football/world_cup_2018'
-  const QUALIFY_CRITERION_ID = [1004240929]
-  const FINAL_CRITERION_ID = [1002978411, 1004240929]
-  // const DEFAULT_CRITERION_ID = [1001221607]    // Champions League
 
   // get all events from the world cup
-  return offeringModule.getEventsByFilter(BASE_FILTER)
+  return offeringModule.getEventsByFilter(data.baseFilter)
     .then(events => {
       // Figure out if we have an array of events or a single one
       if (events.events) {
@@ -35,25 +31,21 @@ const getWCEventData = (additionalBetOffersCriterionIds) => {
         games.forEach(game => {
           if (
             // Quarter finals dates span with padding
-            new Date('2018-07-06 00:00 UTC+3') < new Date(game.event.start) &&
-            new Date(game.event.start) < new Date('2018-07-07 23:59 UTC+3')
-            // // Date span for test purposes
-            // new Date('2018-06-16 00:00 UTC+3') < new Date(game.event.start) &&
-            // new Date(game.event.start) < new Date('2018-06-16 23:59 UTC+3')
-            // // Date span for test purposes
+            dates.quarterFinals.start < new Date(game.event.start) &&
+            new Date(game.event.start) < dates.quarterFinals.end
           ) {
             quarterFinals.push(game)
             eventType = 'quaterFinals'
           } else if (
             // Finals dates span with padding
-            new Date('2018-07-10 00:00 UTC+3') < new Date(game.event.start) &&
-            new Date(game.event.start) < new Date('2018-07-11 23:59 UTC+3')
+            dates.semiFinals.start < new Date(game.event.start) &&
+            new Date(game.event.start) < dates.semiFinals.end
           ) {
             semiFinals.push(game)
             eventType = 'semiFinals'
           } else if(
             // Finals dates span with padding
-            new Date('2018-07-14 00:00 UTC+3') < new Date(game.event.start)
+            dates.finals.start < new Date(game.event.start)
           ) {
             finals.push(game)
             eventType = 'finals'
@@ -102,11 +94,11 @@ const getWCEventData = (additionalBetOffersCriterionIds) => {
 
       // Get all competition events
       // http://kambi-sportsbook-widgets.github.io/widget-core-library/module-offeringModule.html#.getLiveEventsByFilter__anchor
-      return offeringModule.getEventsByFilter(BASE_FILTER + '/all/all/competitions')
+      return offeringModule.getEventsByFilter(data.baseFilter + '/all/all/competitions')
     })
     .then(tournamentEvents => {
       // Filter events based on citerion ids that are selected depending on the stage of the tournament
-      const criteria = eventType !== 'final'? QUALIFY_CRITERION_ID: FINAL_CRITERION_ID
+      const criteria = eventType !== 'final'? data.qualifyCriterionId: data.finalCriterionId
       const competitionEvents = tournamentEvents.events.filter(event => {
         return event.betOffers.length > 0?
           criteria.indexOf(event.betOffers[0].criterion.id) >= 0:
@@ -134,8 +126,12 @@ const getWCEventData = (additionalBetOffersCriterionIds) => {
             betOffer = competitionEvent.betOffers.find(offer => {
               return offer.to === 2
             })
-            // // Overwirte the label param but only for the non-final events
-            // betOffer.criterion.label = t('qualify')
+            if (!betOffer) {
+              betOffer = competitionEvent.betOffers[0]
+            } // else {
+            //   // Overwirte the label param but only for the non-final events
+            //   betOffer.criterion.label = t('qualify')
+            // }
           } else {
             betOffer = competitionEvent.betOffers[0]
           }
