@@ -1,9 +1,9 @@
 import {
   offeringModule,
-  translationModule
+  // translationModule
 } from 'kambi-widget-core-library'
 
-const t = translationModule.getTranslation.bind(translationModule)
+// const t = translationModule.getTranslation.bind(translationModule)
 
 /*
  * @property additionalBetOffersCriterionIds {Array.<number>} an array containing up to two criterion ids to be displayed in the widget
@@ -134,8 +134,8 @@ const getWCEventData = (additionalBetOffersCriterionIds) => {
             betOffer = competitionEvent.betOffers.find(offer => {
               return offer.to === 2
             })
-            // Overwirte the label param but only for the non-final events
-            betOffer.criterion.label = t('qualify')
+            // // Overwirte the label param but only for the non-final events
+            // betOffer.criterion.label = t('qualify')
           } else {
             betOffer = competitionEvent.betOffers[0]
           }
