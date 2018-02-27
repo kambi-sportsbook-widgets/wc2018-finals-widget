@@ -27,7 +27,16 @@ class MainComponent extends React.Component {
           backgroundUrl={this.props.backgroundUrl}
           blendWithOperatorColor={this.props.blendWithOperatorColor}
         />
-        {Events}
+        <Carousel
+          height='100%'
+          indicatorUlStyles={{
+            top: '-12%',
+            right: '5%',
+            width: 'auto'
+          }}
+        >
+          {Events}
+        </Carousel>
       </div>
     )
   }

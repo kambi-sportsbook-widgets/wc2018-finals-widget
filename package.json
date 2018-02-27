@@ -10,14 +10,14 @@
       "test": "kambi-widgets-cli test"
    },
    "dependencies": {
-      "kambi-widget-components": "^1.17.3",
+      "kambi-widget-components": "^1.17.6",
       "kambi-widget-core-library": "^3.12.1",
       "prop-types": "^15.6.0",
       "react": "^16.2.0",
       "react-dom": "^16.2.0"
    },
    "devDependencies": {
-      "kambi-widget-build-tools": "^5.0.4"
+      "kambi-widget-build-tools": "^5.0.5"
    },
    "useHttps": true
 }

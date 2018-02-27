@@ -35,10 +35,12 @@ const getWCEventData = (additionalBetOffersCriterionIds) => {
         games.forEach(game => {
           if (
             // Quarter finals dates span with padding
-            // new Date('2018-07-06 00:00 UTC+3') < new Date(game.event.start) &&
-            // new Date(game.event.start) < new Date('2018-07-07 23:59 UTC+3')
-            new Date('2018-06-16 00:00 UTC+3') < new Date(game.event.start) &&
-            new Date(game.event.start) < new Date('2018-06-16 23:59 UTC+3')
+            new Date('2018-07-06 00:00 UTC+3') < new Date(game.event.start) &&
+            new Date(game.event.start) < new Date('2018-07-07 23:59 UTC+3')
+            // // Date span for test purposes
+            // new Date('2018-06-16 00:00 UTC+3') < new Date(game.event.start) &&
+            // new Date(game.event.start) < new Date('2018-06-16 23:59 UTC+3')
+            // // Date span for test purposes
           ) {
             quarterFinals.push(game)
             eventType = 'quaterFinals'
