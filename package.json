@@ -17,7 +17,7 @@
       "react-dom": "^16.2.0"
    },
    "devDependencies": {
-      "kambi-widget-build-tools": "^5.0.5"
+      "kambi-widget-build-tools": "^5.0.6"
    },
    "useHttps": true
 }
