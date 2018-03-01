@@ -29,11 +29,7 @@ class MainComponent extends React.Component {
         />
         <Carousel
           height='100%'
-          indicatorUlStyles={{
-            top: '-12%',
-            right: '5%',
-            width: 'auto'
-          }}
+          showIndicators={false}
         >
           {Events}
         </Carousel>

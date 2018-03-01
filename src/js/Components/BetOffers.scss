@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 350px;
 }
 
 .event {
@@ -14,23 +15,15 @@
 
 .outcomes {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-content: space-around;
 }
 
 .outcome {
   display: flex;
-  flex-basis: auto;
-  padding: 3px 5px;
-  flex-grow: 1;
-
-  :global(.KambiWidget-outcome__flexwrap) {
-    justify-content: space-around;
-  }
-
-  :global(.KambiWidget-outcome__label-wrapper) {
-    flex: none;
-  }
+  margin: 3px 5px;
+  flex: 1;
+  overflow: hidden;
 }
 
 .betoffer-label {
