@@ -57,8 +57,13 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
           gamesToLookup = quarterFinals
         } else if (semiFinals.length > 0) {
           gamesToLookup = semiFinals
-        } else {
+        } else if (finals.length > 0){
           gamesToLookup = finals.reverse()
+        } else {
+          throw new Error(
+            `No events available for supplied filter: ${data.baseFilter}`,
+            events.event
+          )
         }
         // Get all betoffers of all the games
         // http://kambi-sportsbook-widgets.github.io/widget-core-library/module-offeringModule.html#.getLiveEventsByFilter__anchor
@@ -70,7 +75,7 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
       }
 
       throw new Error(
-        'Event widget: The id provided does not correspont to a match or has no bet offers',
+        `No events available for supplied filter: ${data.baseFilter}`,
         events.event
       )
     })
