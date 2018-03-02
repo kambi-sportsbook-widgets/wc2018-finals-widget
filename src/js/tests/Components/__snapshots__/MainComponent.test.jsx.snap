@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainComponent DOM rendering fails gracefully with empty data array 1`] = `
+<div>
+  <BlendedBackground
+    backgroundUrl=""
+    blendWithOperatorColor={true}
+  />
+  <Carousel
+    animationType="slide"
+    autoPlay={false}
+    cssEase="ease"
+    height="100%"
+    imageLoaded={[Function]}
+    indicatorLiStyles={Object {}}
+    indicatorUlStyles={Object {}}
+    infinite={true}
+    infiniteLoop={true}
+    initializedCarousel={[Function]}
+    intervalDuration={3500}
+    legendClassName={null}
+    onCarouselChange={[Function]}
+    onCarouselItemClick={[Function]}
+    onCarouselMouseEnter={[Function]}
+    onCarouselMouseLeave={[Function]}
+    redirectCallback={null}
+    selectedItem={0}
+    showArrows={true}
+    showIndicators={false}
+    stopOnHover={false}
+    transitionDuration={800}
+    wrapperClassName={null}
+  />
+</div>
+`;
+
+exports[`MainComponent DOM rendering renders correctly with example data 1`] = `
+<div>
+  <BlendedBackground
+    backgroundUrl=""
+    blendWithOperatorColor={true}
+  />
+  <Carousel
+    animationType="slide"
+    autoPlay={false}
+    cssEase="ease"
+    height="100%"
+    imageLoaded={[Function]}
+    indicatorLiStyles={Object {}}
+    indicatorUlStyles={Object {}}
+    infinite={true}
+    infiniteLoop={true}
+    initializedCarousel={[Function]}
+    intervalDuration={3500}
+    legendClassName={null}
+    onCarouselChange={[Function]}
+    onCarouselItemClick={[Function]}
+    onCarouselMouseEnter={[Function]}
+    onCarouselMouseLeave={[Function]}
+    redirectCallback={null}
+    selectedItem={0}
+    showArrows={true}
+    showIndicators={false}
+    stopOnHover={false}
+    transitionDuration={800}
+    wrapperClassName={null}
+  >
+    <EventWidget
+      event={
+        Object {
+          "event": Object {
+            "id": 1,
+          },
+        }
+      }
+      flagBaseUrl={undefined}
+      iconUrl={undefined}
+    />
+    <EventWidget
+      event={
+        Object {
+          "event": Object {
+            "id": 2,
+          },
+        }
+      }
+      flagBaseUrl={undefined}
+      iconUrl={undefined}
+    />
+    <EventWidget
+      event={
+        Object {
+          "event": Object {
+            "id": 3,
+          },
+        }
+      }
+      flagBaseUrl={undefined}
+      iconUrl={undefined}
+    />
+  </Carousel>
+</div>
+`;

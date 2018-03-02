@@ -1,0 +1,179 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BetOffers DOM rendering renders correctly with empty props 1`] = `
+<div
+  className="betoffer-container"
+/>
+`;
+
+exports[`BetOffers DOM rendering renders correctly with example props 1`] = `
+<div
+  className="betoffer-container"
+>
+  <div
+    className="event main"
+  >
+    <span
+      className="betoffer-label"
+    >
+      Some label 1
+    </span>
+    <div
+      className="outcomes"
+    >
+      <div
+        className="outcome"
+      >
+        <OutcomeButton
+          event={Object {}}
+          label={true}
+          outcome={
+            Object {
+              "id": 1,
+            }
+          }
+          outlineStyle={true}
+        />
+      </div>
+      <div
+        className="outcome"
+      >
+        <OutcomeButton
+          event={Object {}}
+          label={true}
+          outcome={
+            Object {
+              "id": 2,
+            }
+          }
+          outlineStyle={true}
+        />
+      </div>
+      <div
+        className="outcome"
+      >
+        <OutcomeButton
+          event={Object {}}
+          label={true}
+          outcome={
+            Object {
+              "id": 3,
+            }
+          }
+          outlineStyle={true}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="event"
+  >
+    <span
+      className="betoffer-label"
+    >
+      Some label 2
+    </span>
+    <div
+      className="outcomes"
+    >
+      <div
+        className="outcome"
+      >
+        <OutcomeButton
+          event={Object {}}
+          label={true}
+          outcome={
+            Object {
+              "id": 4,
+            }
+          }
+          outlineStyle={true}
+        />
+      </div>
+      <div
+        className="outcome"
+      >
+        <OutcomeButton
+          event={Object {}}
+          label={true}
+          outcome={
+            Object {
+              "id": 5,
+            }
+          }
+          outlineStyle={true}
+        />
+      </div>
+      <div
+        className="outcome"
+      >
+        <OutcomeButton
+          event={Object {}}
+          label={true}
+          outcome={
+            Object {
+              "id": 6,
+            }
+          }
+          outlineStyle={true}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="event"
+  >
+    <span
+      className="betoffer-label"
+    >
+      Some label 3
+    </span>
+    <div
+      className="outcomes"
+    >
+      <div
+        className="outcome"
+      >
+        <OutcomeButton
+          event={Object {}}
+          label={true}
+          outcome={
+            Object {
+              "id": 7,
+            }
+          }
+          outlineStyle={true}
+        />
+      </div>
+      <div
+        className="outcome"
+      >
+        <OutcomeButton
+          event={Object {}}
+          label={true}
+          outcome={
+            Object {
+              "id": 8,
+            }
+          }
+          outlineStyle={true}
+        />
+      </div>
+      <div
+        className="outcome"
+      >
+        <OutcomeButton
+          event={Object {}}
+          label={true}
+          outcome={
+            Object {
+              "id": 9,
+            }
+          }
+          outlineStyle={true}
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { BlendedBackground } from 'kambi-widget-components'
 import { widgetModule, translationModule } from 'kambi-widget-core-library'
 import styles from './EventWidget.scss'
 import Participants from './Participants'

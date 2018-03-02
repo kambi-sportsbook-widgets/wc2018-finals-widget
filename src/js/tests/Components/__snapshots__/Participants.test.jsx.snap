@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Participants DOM rendering renders correctly with an example event 1`] = `
+<div
+  className="participants"
+  onClick={[Function]}
+>
+  <div
+    className="team"
+  >
+    <i />
+    <h2
+      className="label"
+    >
+      Country1
+    </h2>
+  </div>
+  <div
+    className="logo"
+  >
+    <i />
+    <h3
+      className="label"
+    >
+      WC2018
+    </h3>
+    <p
+      className="sublabel"
+    >
+      RUSSIA
+    </p>
+    <DateComponent
+      date={1528988400000}
+      short={true}
+    />
+  </div>
+  <div
+    className="team"
+  >
+    <i />
+    <h2
+      className="label"
+    >
+      Country2
+    </h2>
+  </div>
+</div>
+`;

@@ -13,8 +13,10 @@
       "kambi-widget-components": "^1.17.6",
       "kambi-widget-core-library": "^3.12.1",
       "prop-types": "^15.6.0",
-      "react": "^16.2.0",
-      "react-dom": "^16.2.0"
+      "react": "15.6.2",
+      "react-addons-test-utils": "15.6.2",
+      "react-dom": "15.6.2",
+      "react-test-renderer": "15.6.2"
    },
    "devDependencies": {
       "kambi-widget-build-tools": "^5.0.6"

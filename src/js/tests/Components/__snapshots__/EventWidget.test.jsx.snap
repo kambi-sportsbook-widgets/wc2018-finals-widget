@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Event DOM rendering renders correctly with an example event 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <BetOffers
+      betOffers={
+        Array [
+          Object {},
+          Object {},
+        ]
+      }
+      event={
+        Object {
+          "countriesEnglishNames": Array [
+            "Country1",
+            "Country2",
+          ],
+          "englishName": "Country1 - Country2",
+          "id": 1,
+          "start": 1528988400000,
+          "state": "NOT_STARTED",
+          "type": "ET_MATCH",
+        }
+      }
+    />
+    <Participants
+      event={
+        Object {
+          "countriesEnglishNames": Array [
+            "Country1",
+            "Country2",
+          ],
+          "englishName": "Country1 - Country2",
+          "id": 1,
+          "start": 1528988400000,
+          "state": "NOT_STARTED",
+          "type": "ET_MATCH",
+        }
+      }
+      flagBaseUrl={null}
+      iconUrl={null}
+      onClick={[Function]}
+    />
+    <BetOffers
+      betOffers={
+        Array [
+          Object {},
+          Object {},
+        ]
+      }
+      event={
+        Object {
+          "countriesEnglishNames": Array [
+            "Country1",
+            "Country2",
+          ],
+          "englishName": "Country1 - Country2",
+          "id": 1,
+          "start": 1528988400000,
+          "state": "NOT_STARTED",
+          "type": "ET_MATCH",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Event DOM rendering renders correctly with default props 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <BetOffers
+      betOffers={Array []}
+      event={Object {}}
+    />
+    <Participants
+      event={Object {}}
+      flagBaseUrl={null}
+      iconUrl={null}
+      onClick={[Function]}
+    />
+    <BetOffers
+      betOffers={Array []}
+      event={Object {}}
+    />
+  </div>
+</div>
+`;

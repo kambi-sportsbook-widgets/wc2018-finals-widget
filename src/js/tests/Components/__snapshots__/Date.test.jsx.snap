@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Date DOM rendering renders correctly with example props 1`] = `
+<p>
+  day4 
+  14 
+  month5 
+  17
+  :
+  00
+</p>
+`;

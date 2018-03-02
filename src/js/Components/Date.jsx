@@ -21,7 +21,9 @@ const DateComponent = ({ date, short = false }) => {
 }
 
 DateComponent.propTypes = {
-  date: PropTypes.string.isRequired,
+  date: PropTypes.oneOfType([
+    PropTypes.number, PropTypes.string
+  ]).isRequired,
   short: PropTypes.bool
 }
 
