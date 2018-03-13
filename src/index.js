@@ -20,9 +20,9 @@ coreLibrary
       1001159926, // Total goals
       1001642858  // both teams to score
     ], // array with up to 2 numbers, find out the criterionIds of the mock betoffers to use as default
-    flagBaseUrl: "./assets/flags",   // string with the base URL, concatenate with the lowecased englishName of the team + ".svg" to generate final URL (replace spaces with _)
-    iconUrl: "./assets/world_cup_2018.svg",  // string with the icon URL, should have a default if absent
-    backgroundUrl: 'assets/overview-bw-bg-desktop.jpg', // string with the image to use as background-image
+    flagBaseUrl: "https://d1fqgomuxh4f5p.cloudfront.net/tournamentdata/worldcup2018/icons",   // string with the base URL, concatenate with the lowecased englishName of the team + ".svg" to generate final URL (replace spaces with _)
+    iconUrl: "https://d1fqgomuxh4f5p.cloudfront.net/tournamentdata/worldcup2018/icons/world_cup_2018.svg",  // string with the icon URL, should have a default if absent
+    backgroundUrl: 'https://d1fqgomuxh4f5p.cloudfront.net/tournamentdata/worldcup2018/overview-bw-bg-desktop.jpg', // string with the image to use as background-image
     blendWithOperatorColor: true, // determines if background should be blended with operator color. (Normally not wanted if providing own background image)
     // Data for World Cup 2018
     fetchData: {
@@ -46,7 +46,7 @@ coreLibrary
     //   }
     // },
     // // Date span for World Cup 2018
-    
+
     // // Data for Champions League
     // fetchData: {
     //   baseFilter:'football/champions_league',

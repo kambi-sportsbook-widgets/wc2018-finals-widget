@@ -10,16 +10,13 @@
       "test": "kambi-widgets-cli test"
    },
    "dependencies": {
-      "kambi-widget-components": "^1.17.6",
-      "kambi-widget-core-library": "^3.12.1",
-      "prop-types": "^15.6.0",
-      "react": "15.6.2",
-      "react-addons-test-utils": "15.6.2",
-      "react-dom": "15.6.2",
-      "react-test-renderer": "15.6.2"
+      "kambi-widget-components": "^1.18.2",
+      "kambi-widget-core-library": "^4.0.1"
    },
-   "devDependencies": {
-      "kambi-widget-build-tools": "^5.0.6"
+   "peerDependencies": {
+      "prop-types": "x",
+      "react": "x",
+      "react-dom": "x"
    },
    "useHttps": true
 }

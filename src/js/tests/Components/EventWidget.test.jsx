@@ -1,7 +1,3 @@
-// Don't load svg strings into tests
-jest.mock('../../../../node_modules/kambi-widget-components/src/Carousel/chevron_left.svg', () => <svg>Placeholder</svg>)
-jest.mock('../../../../node_modules/kambi-widget-components/src/Carousel/chevron_right.svg', () => <svg>Placeholder</svg>)
-
 import React from 'react'
 import ReactShallowRenderer from 'react-test-renderer/shallow'
 import EventWidget from '../../Components/EventWidget'
