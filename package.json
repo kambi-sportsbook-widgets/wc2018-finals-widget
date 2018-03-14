@@ -10,7 +10,7 @@
       "test": "kambi-widgets-cli test"
    },
    "dependencies": {
-      "kambi-widget-components": "^1.18.2",
+      "kambi-widget-components": "^1.18.3",
       "kambi-widget-core-library": "^4.0.1"
    },
    "peerDependencies": {
