@@ -34,15 +34,15 @@ coreLibrary
     // // Date span for World Cup 2018
     // fetchDates: {
     //   quarterFinals: {
-    //     start: '2018-07-06 00:00',
-    //     end: '2018-07-07 23:59'
+    //     start: '2018-07-06T00:00',
+    //     end: '2018-07-07T23:59'
     //   },
     //   semiFinals: {
-    //     start: '2018-07-10 00:00',
-    //     end: '2018-07-11 23:59'
+    //     start: '2018-07-10T00:00',
+    //     end: '2018-07-11T23:59'
     //   },
     //   finals: {
-    //     start: '2018-07-14 00:00'
+    //     start: '2018-07-14T00:00'
     //   }
     // },
     // // Date span for World Cup 2018
@@ -57,15 +57,15 @@ coreLibrary
     // // Date span for Champions League
     // fetchDates: {
     //   quarterFinals: {
-    //     start: '2018-04-03 00:00',
-    //     end: '2018-04-11 23:59'
+    //     start: '2018-04-03T00:00',
+    //     end: '2018-04-11T23:59'
     //   },
     //   semiFinals: {
-    //     start: '2018-04-24 00:00',
-    //     end: '2018-05-02 23:59'
+    //     start: '2018-04-24T00:00',
+    //     end: '2018-05-02T23:59'
     //   },
     //   finals: {
-    //     start: '2018-05-26 00:00'
+    //     start: '2018-05-26T00:00'
     //   }
     // },
     // // Date span for Champions League
@@ -73,15 +73,15 @@ coreLibrary
     // Date span for test purposes to be used with World Cup data
     fetchDates: {
       quarterFinals: {
-        start: '2018-06-16 00:00',
-        end: '2018-06-16 23:59'
+        start: '2018-06-16T00:00',
+        end: '2018-06-16T23:59'
       },
       semiFinals: {
-        start: '2018-07-10 00:00',
-        end: '2018-07-11 23:59'
+        start: '2018-07-10T00:00',
+        end: '2018-07-11T23:59'
       },
       finals: {
-        start: '2018-07-14 00:00'
+        start: '2018-07-14T00:00'
       }
     }
     // Date span for test purposes to be used with World Cup data

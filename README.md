@@ -25,15 +25,15 @@ Arguments and their default values:
   },
   "fetchDates": {
     "quarterFinals": {
-      "start": "2018-06-16 00:00",
-      "end": "2018-06-16 23:59"
+      "start": "2018-06-16T00:00",
+      "end": "2018-06-16T23:59"
     },
     "semiFinals": {
-      "start": "2018-07-10 00:00",
-      "end": "2018-07-11 23:59"
+      "start": "2018-07-10T00:00",
+      "end": "2018-07-11T23:59"
     },
     "finals": {
-      "start": "2018-07-14 00:00"
+      "start": "2018-07-14T00:00"
     }
   }
 }
