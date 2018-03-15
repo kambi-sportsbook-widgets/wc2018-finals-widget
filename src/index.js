@@ -34,15 +34,15 @@ coreLibrary
     // // Date span for World Cup 2018
     // fetchDates: {
     //   quarterFinals: {
-    //     start: new Date('2018-07-06 00:00 UTC+3'),
-    //     end: new Date('2018-07-07 23:59 UTC+3')
+    //     start: '2018-07-06 00:00',
+    //     end: '2018-07-07 23:59'
     //   },
     //   semiFinals: {
-    //     start: new Date('2018-07-10 00:00 UTC+3'),
-    //     end: new Date('2018-07-11 23:59 UTC+3')
+    //     start: '2018-07-10 00:00',
+    //     end: '2018-07-11 23:59'
     //   },
     //   finals: {
-    //     start: new Date('2018-07-14 00:00 UTC+3')
+    //     start: '2018-07-14 00:00'
     //   }
     // },
     // // Date span for World Cup 2018
@@ -57,15 +57,15 @@ coreLibrary
     // // Date span for Champions League
     // fetchDates: {
     //   quarterFinals: {
-    //     start: new Date('2018-04-03 00:00 UTC+0'),
-    //     end: new Date('2018-04-11 23:59 UTC+0')
+    //     start: '2018-04-03 00:00',
+    //     end: '2018-04-11 23:59'
     //   },
     //   semiFinals: {
-    //     start: new Date('2018-04-24 00:00 UTC+0'),
-    //     end: new Date('2018-05-02 23:59 UTC+0')
+    //     start: '2018-04-24 00:00',
+    //     end: '2018-05-02 23:59'
     //   },
     //   finals: {
-    //     start: new Date('2018-05-26 00:00 UTC+0')
+    //     start: '2018-05-26 00:00'
     //   }
     // },
     // // Date span for Champions League
@@ -73,15 +73,15 @@ coreLibrary
     // Date span for test purposes to be used with World Cup data
     fetchDates: {
       quarterFinals: {
-        start: new Date('2018-06-16 00:00 UTC+3'),
-        end: new Date('2018-06-16 23:59 UTC+3')
+        start: '2018-06-16 00:00',
+        end: '2018-06-16 23:59'
       },
       semiFinals: {
-        start: new Date('2018-07-10 00:00 UTC+3'),
-        end: new Date('2018-07-11 23:59 UTC+3')
+        start: '2018-07-10 00:00',
+        end: '2018-07-11 23:59'
       },
       finals: {
-        start: new Date('2018-07-14 00:00 UTC+3')
+        start: '2018-07-14 00:00'
       }
     }
     // Date span for test purposes to be used with World Cup data

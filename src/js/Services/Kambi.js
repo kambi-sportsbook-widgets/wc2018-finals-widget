@@ -34,21 +34,21 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
         games.forEach(game => {
           if (
             // Quarter finals dates span with padding
-            dates.quarterFinals.start < new Date(game.event.start) &&
-            new Date(game.event.start) < dates.quarterFinals.end
+            new Date(dates.quarterFinals.start) < new Date(game.event.start) &&
+            new Date(game.event.start) < new Date(dates.quarterFinals.end)
           ) {
             quarterFinals.push(game)
             eventType = 'quaterFinals'
           } else if (
             // Finals dates span with padding
-            dates.semiFinals.start < new Date(game.event.start) &&
-            new Date(game.event.start) < dates.semiFinals.end
+            new Date(dates.semiFinals.start) < new Date(game.event.start) &&
+            new Date(game.event.start) < new Date(dates.semiFinals.end)
           ) {
             semiFinals.push(game)
             eventType = 'semiFinals'
           } else if(
             // Finals dates span with padding
-            dates.finals.start < new Date(game.event.start)
+            new Date(dates.finals.start) < new Date(game.event.start)
           ) {
             finals.push(game)
             eventType = 'finals'

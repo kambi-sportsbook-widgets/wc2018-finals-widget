@@ -25,15 +25,15 @@ Arguments and their default values:
   },
   "fetchDates": {
     "quarterFinals": {
-      "start": new Date('2018-06-16 00:00 UTC+3'),
-      "end": new Date('2018-06-16 23:59 UTC+3')
+      "start": "2018-06-16 00:00",
+      "end": "2018-06-16 23:59"
     },
     "semiFinals": {
-      "start": new Date('2018-07-10 00:00 UTC+3'),
-      "end": new Date('2018-07-11 23:59 UTC+3')
+      "start": "2018-07-10 00:00",
+      "end": "2018-07-11 23:59"
     },
     "finals": {
-      "start": new Date('2018-07-14 00:00 UTC+3')
+      "start": "2018-07-14 00:00"
     }
   }
 }
@@ -51,7 +51,7 @@ Arguments and their default values:
   3. `finalCriterionId` - Array<number> - list of tournament events critera ids to display during finals (citeria at the end of the list, if they are available, overwrite those at the begining)
 8. `fetchDates` - Object - containing information regarding date spans of tournament stages
   1. `<stage-name>{ quarterFinals | semiFinals | finals }`
-    1. `<stage-date-border>{ start | end }` - Date - date the tournament stage starts of ends
+    1. `<stage-date-border>{ start | end }` - string - date string compliant with `Date.parse()` method [(described here)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse) marking the time the tournament stage starts of ends
 
 ## Bet Offers selection logic
 
