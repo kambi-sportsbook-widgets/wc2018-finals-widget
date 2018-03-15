@@ -46,12 +46,12 @@ Arguments and their default values:
 5. `backgroundUrl` - string - url poitning to a file that should be used as a background
 6. `blendWithOperatorColor` - boolean - should the background be covered with a colored overlay
 7. `fetchData` - Object - containing information regarding which betoffers to display
-  7.1. `baseFilter` - string - url path to tournament
-  7.2. `qualifyCriterionId` - Array<number> - list of tournament events critera ids to display before finals (citeria at the end of the list, if they are available, overwrite those at the begining)
-  7.3. `finalCriterionId` - Array<number> - list of tournament events critera ids to display during finals (citeria at the end of the list, if they are available, overwrite those at the begining)
+  1. `baseFilter` - string - url path to tournament
+  2. `qualifyCriterionId` - Array<number> - list of tournament events critera ids to display before finals (citeria at the end of the list, if they are available, overwrite those at the begining)
+  3. `finalCriterionId` - Array<number> - list of tournament events critera ids to display during finals (citeria at the end of the list, if they are available, overwrite those at the begining)
 8. `fetchDates` - Object - containing information regarding date spans of tournament stages
-  8.1. `<stage-name>{ quarterFinals | semiFinals | finals }`
-    8.1.1. `<stage-date-border>{ start | end }` - Date - date the tournament stage starts of ends
+  1. `<stage-name>{ quarterFinals | semiFinals | finals }`
+    1. `<stage-date-border>{ start | end }` - Date - date the tournament stage starts of ends
 
 ## Bet Offers selection logic
 
