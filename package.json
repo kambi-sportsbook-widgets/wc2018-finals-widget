@@ -1,22 +1,22 @@
 {
-   "name": "wc2018-finals-widget",
-   "description": "Description of wc2018-finals-widget",
-   "version": "0.1.0",
-   "main": "dist/index.js",
-   "scripts": {
-      "clean": "kambi-widgets-cli clean",
-      "start": "kambi-widgets-cli start",
-      "build": "kambi-widgets-cli build",
-      "test": "kambi-widgets-cli test"
-   },
-   "dependencies": {
-      "kambi-widget-components": "^1.18.3",
-      "kambi-widget-core-library": "^4.0.1"
-   },
-   "peerDependencies": {
-      "prop-types": "x",
-      "react": "x",
-      "react-dom": "x"
-   },
-   "useHttps": true
+  "name": "wc2018-finals-widget",
+  "description": "Description of wc2018-finals-widget",
+  "version": "0.3.1",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "kambi-widgets-cli clean",
+    "start": "kambi-widgets-cli start",
+    "build": "kambi-widgets-cli build",
+    "test": "kambi-widgets-cli test"
+  },
+  "dependencies": {
+    "kambi-widget-components": "^1.18.3",
+    "kambi-widget-core-library": "^4.0.3"
+  },
+  "peerDependencies": {
+    "prop-types": "x",
+    "react": "x",
+    "react-dom": "x"
+  },
+  "useHttps": true
 }
