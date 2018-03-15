@@ -12,10 +12,13 @@ import {
 const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
   let finalEvent = []
   let eventType
+  let cometitionEventsNum
 
   // get all events from the world cup
-  return offeringModule.getEventsByFilter(data.baseFilter)
-    .then(events => {
+  return Promise.all([offeringModule.getEventsByFilter(data.baseFilter), offeringModule.getEventsByFilter(data.baseFilter + '/all/all/competitions')])
+    .then(responses => {
+      const events = responses[0]
+      const tournamentEvents = responses[1]
       // Figure out if we have an array of events or a single one
       if (events.events) {
         // get not-started matches only
@@ -31,21 +34,21 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
         games.forEach(game => {
           if (
             // Quarter finals dates span with padding
-            dates.quarterFinals.start < new Date(game.event.start) &&
-            new Date(game.event.start) < dates.quarterFinals.end
+            new Date(dates.quarterFinals.start) < new Date(game.event.start) &&
+            new Date(game.event.start) < new Date(dates.quarterFinals.end)
           ) {
             quarterFinals.push(game)
             eventType = 'quaterFinals'
           } else if (
             // Finals dates span with padding
-            dates.semiFinals.start < new Date(game.event.start) &&
-            new Date(game.event.start) < dates.semiFinals.end
+            new Date(dates.semiFinals.start) < new Date(game.event.start) &&
+            new Date(game.event.start) < new Date(dates.semiFinals.end)
           ) {
             semiFinals.push(game)
             eventType = 'semiFinals'
           } else if(
             // Finals dates span with padding
-            dates.finals.start < new Date(game.event.start)
+            new Date(dates.finals.start) < new Date(game.event.start)
           ) {
             finals.push(game)
             eventType = 'finals'
@@ -65,13 +68,32 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
             events.event
           )
         }
+
+        // Prepare games promises
+        const promisesMatches = gamesToLookup.map(game => {
+          return offeringModule.getEvent(game.event.id)
+        })
+
+        // Add tournament events promises
+        // Filter events based on citerion ids that are selected depending on the stage of the tournament
+        const criteria = eventType !== 'final'? data.qualifyCriterionId: data.finalCriterionId
+        const competitionEvents = tournamentEvents.events.filter(event => {
+          return event.betOffers.length > 0?
+            criteria.indexOf(event.betOffers[0].criterion.id) >= 0:
+            false
+        })
+
+        cometitionEventsNum = competitionEvents.length
+        const promisesCompetition = competitionEvents.map(event => {
+          return offeringModule.getEvent(event.event.id)
+        })
+
         // Get all betoffers of all the games
         // http://kambi-sportsbook-widgets.github.io/widget-core-library/module-offeringModule.html#.getLiveEventsByFilter__anchor
-        return Promise.all(
-          gamesToLookup.map(game => {
-            return offeringModule.getEvent(game.event.id)
-          })
-        )
+        return Promise.all([
+          ...promisesMatches,
+          ...promisesCompetition
+        ])
       }
 
       throw new Error(
@@ -79,7 +101,11 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
         events.event
       )
     })
-    .then(events => {
+    .then(responses => {
+
+      const events = responses.slice(0, cometitionEventsNum * -1)
+      const competitionEventData = responses.slice(cometitionEventsNum * -1)
+
       events.forEach((event, index) => {
         // Filter bet offers based on criterion ids provided in params
         let newBetOffers = []
@@ -97,24 +123,7 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
 
       })
 
-      // Get all competition events
-      // http://kambi-sportsbook-widgets.github.io/widget-core-library/module-offeringModule.html#.getLiveEventsByFilter__anchor
-      return offeringModule.getEventsByFilter(data.baseFilter + '/all/all/competitions')
-    })
-    .then(tournamentEvents => {
-      // Filter events based on citerion ids that are selected depending on the stage of the tournament
-      const criteria = eventType !== 'final'? data.qualifyCriterionId: data.finalCriterionId
-      const competitionEvents = tournamentEvents.events.filter(event => {
-        return event.betOffers.length > 0?
-          criteria.indexOf(event.betOffers[0].criterion.id) >= 0:
-          false
-      })
-
-      return Promise.all(competitionEvents.map(event => {
-        return offeringModule.getEvent(event.event.id)
-      }))
-    })
-    .then(competitionEventData => {
+      // Inject competition events
       const result = finalEvent.map((event, index) => {
 
         // Extract betting offer for Playing countries

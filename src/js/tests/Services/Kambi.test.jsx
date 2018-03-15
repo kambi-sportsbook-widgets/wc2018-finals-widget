@@ -163,8 +163,8 @@ describe('Kambi service finals events', () => {
          })
          .catch((err) => {
             expect(err.message === `No events available for supplied filter: ${data.baseFilter}`)
-            expect(offeringModule.getEventsByFilter).toHaveBeenCalledTimes(1)
-            expect(offeringModule.getEventsByFilter).toHaveBeenLastCalledWith('test/filter/1')
+            expect(offeringModule.getEventsByFilter).toHaveBeenCalledTimes(2)
+            expect(offeringModule.getEventsByFilter).toHaveBeenLastCalledWith('test/filter/1/all/all/competitions')
             expect(offeringModule.getEvent).not.toHaveBeenCalled()
          })
    })
