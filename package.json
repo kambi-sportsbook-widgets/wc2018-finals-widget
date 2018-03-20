@@ -10,13 +10,15 @@
     "test": "kambi-widgets-cli test"
   },
   "dependencies": {
-    "kambi-widget-components": "^1.18.3",
-    "kambi-widget-core-library": "^4.0.3"
+    "kambi-widget-components": "^1.18.4",
+    "kambi-widget-core-library": "^4.1.0"
   },
   "peerDependencies": {
     "prop-types": "x",
     "react": "x",
     "react-dom": "x"
   },
-  "useHttps": true
+  "devServer": {
+    "https": true
+  }
 }
