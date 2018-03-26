@@ -22,12 +22,12 @@ exports[`Participants DOM rendering renders correctly with an example event 1`] 
     <h3
       className="label"
     >
-      WC2018
+      CHAMPIONSLEAGUE
     </h3>
     <p
       className="sublabel"
     >
-      RUSSIA
+      LEAGUEYEAR
     </p>
     <DateComponent
       date={1528988400000}

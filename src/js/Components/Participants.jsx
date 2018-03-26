@@ -43,8 +43,8 @@ const Participants = ({ event, flagBaseUrl, iconUrl, onClick }) => {
       </div>
       <div className={styles.logo}>
         {logoIcon}
-        <h3 className={styles.label}>{t('wc2018').toUpperCase()}</h3>
-        <p className={styles.sublabel}>{t('russia').toUpperCase()}</p>
+        <h3 className={styles.label}>{t('championsLeague').toUpperCase()}</h3>
+        <p className={styles.sublabel}>{t('leagueYear').toUpperCase()}</p>
 
         <DateComponent date={event.start} short={true} />
       </div>
