@@ -12,7 +12,7 @@ import {
 const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
   let finalEvent = []
   let eventType
-  let cometitionEventsNum
+  let competitionEventsNum
 
   // get all events from the world cup
   return Promise.all([offeringModule.getEventsByFilter(data.baseFilter), offeringModule.getEventsByFilter(data.baseFilter + '/all/all/competitions')])
@@ -23,7 +23,7 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
       if (events.events) {
         // get not-started matches only
         const games = events.events.filter(event => {
-          return event.event.type === 'ET_MATCH' || event.event.state('NOT_STARTED')
+          return event.event.type === 'ET_MATCH' && event.event.state === 'NOT_STARTED'
         })
 
         let quarterFinals = []
@@ -76,14 +76,14 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
 
         // Add tournament events promises
         // Filter events based on citerion ids that are selected depending on the stage of the tournament
-        const criteria = eventType !== 'final'? data.qualifyCriterionId: data.finalCriterionId
+        const criteria = eventType !== 'finals'? data.qualifyCriterionId: data.finalCriterionId
         const competitionEvents = tournamentEvents.events.filter(event => {
           return event.betOffers.length > 0?
             criteria.indexOf(event.betOffers[0].criterion.id) >= 0:
             false
         })
 
-        cometitionEventsNum = competitionEvents.length
+        competitionEventsNum = competitionEvents.length
         const promisesCompetition = competitionEvents.map(event => {
           return offeringModule.getEvent(event.event.id)
         })
@@ -103,14 +103,17 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
     })
     .then(responses => {
 
-      const events = responses.slice(0, cometitionEventsNum * -1)
-      const competitionEventData = responses.slice(cometitionEventsNum * -1)
+      const events = competitionEventsNum? responses.slice(0, competitionEventsNum * -1): responses.slice(0)
+      const competitionEventData = competitionEventsNum? responses.slice(competitionEventsNum * -1): []
 
       events.forEach((event, index) => {
         // Filter bet offers based on criterion ids provided in params
         let newBetOffers = []
         // Add main offer
-        newBetOffers.push(event.betOffers.find(offer => offer.main))
+        const mainBetoffer = event.betOffers.find(offer => offer.main)
+        if (mainBetoffer) {
+          newBetOffers.push(mainBetoffer)
+        }
 
         // Add selected bet offers
         additionalBetOffersCriterionIds.forEach(crit => {
@@ -136,16 +139,13 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
         let tournamentBetOffer
         competitionEventData.forEach(competitionEvent => {
           let betOffer
-          if (competitionEvent.betOffers.length > 1 && eventType !== 'final') {
+          if (competitionEvent.betOffers.length > 1 && eventType !== 'finals') {
             betOffer = competitionEvent.betOffers.find(offer => {
               return offer.to === 2
             })
             if (!betOffer) {
               betOffer = competitionEvent.betOffers[0]
-            } // else {
-            //   // Overwirte the label param but only for the non-final events
-            //   betOffer.criterion.label = t('qualify')
-            // }
+            }
           } else {
             betOffer = competitionEvent.betOffers[0]
           }
@@ -159,10 +159,14 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
           }
         })
         // Add new bet offers to event object to pass to React
-        event.betOffers.splice(1, 0, tournamentBetOffer)
+        if (tournamentBetOffer) event.betOffers.splice(1, 0, tournamentBetOffer)
 
         return event
       })
+
+      // Sort by starting date
+      result.sort((a, b) => new Date(a.event.start) - new Date(b.event.start))
+
       return result
     })
 }
