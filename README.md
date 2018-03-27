@@ -1,4 +1,4 @@
-# wc2018-finals-widget
+# wc2018-finals-widget / champions-league-finals-widget
 
 ![](./screenshot.png)
 
@@ -8,26 +8,23 @@ Finals widget is shown pre-match for the Semifinal, Bronze martch and Final. Ava
 
 Arguments and their default values:
 ```json
-"args": {
+"arguments": {
   "widgetTrackingName": "wc2018-finals",
   "additionalBetOffersCriterionIds": [
     1001159926,
     1001642858
   ],
   "flagBaseUrl": "https://d1fqgomuxh4f5p.cloudfront.net/tournamentdata/worldcup2018/icons",
-  "iconUrl": "https://d1fqgomuxh4f5p.cloudfront.net/tournamentdata/worldcup2018/icons/world_cup_2018.svg",
+  "iconUrl": "https://d1fqgomuxh4f5p.cloudfront.net/tournamentdata/worldcup2018/icons/champions_league.svg",
   "backgroundUrl": "https://d1fqgomuxh4f5p.cloudfront.net/tournamentdata/worldcup2018/overview-bw-bg-desktop.jpg",
   "blendWithOperatorColor": true,
   "fetchData": {
-    "baseFilter":"/football/world_cup_2018",
-    "qualifyCriterionId": [ 1004240929 ],
-    "finalCriterionId": [ 1002978411, 1004240929 ]
+    "baseFilter":"football/champions_league",
+    "qualifyCriterionId": [ 1001159599 ],
+    "finalCriterionId": [ 1001221607 ]
   },
   "fetchDates": {
-    "quarterFinals": {
-      "start": "2018-06-16T00:00",
-      "end": "2018-06-16T23:59"
-    },
+    "quarterFinals": {},
     "semiFinals": {
       "start": "2018-07-10T00:00",
       "end": "2018-07-11T23:59"
@@ -53,12 +50,34 @@ Arguments and their default values:
   1. `<stage-name>{ quarterFinals | semiFinals | finals }`
     1. `<stage-date-border>{ start | end }` - string - date string compliant with `Date.parse()` method [(described here)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse) marking the time the tournament stage starts of ends
 
+## Arguments for testing purposes
+
+If there are no matches yet to be displayed, due to progresive scheduling, you can make changes to provided date spans to force the wideget to display some matches. For example:
+```json
+"arguments": {
+  "fetchDates": {
+    "quarterFinals": {
+      "start": "2018-04-03T00:00",
+      "end": "2018-04-11T23:59"
+    },
+    "semiFinals": {
+      "start": "2018-04-24T00:00",
+      "end": "2018-05-02T23:59"
+    },
+    "finals": {
+      "start": "2018-05-26T00:00"
+    }
+  }
+}
+```
+
 ## Bet Offers selection logic
 
 1. Upcoming matches are sorted into groups based on their starting time: quarter finals, semi finals and finals. If there are no lower-level upcoming matches the widget shows the next next stage.
 2. Match outcome and up to two other bets specified in `additionalBetOffersCriterionIds` are displayed for all matches.
 3. Additionaly one bet offer, matching the participating countries, from tournamet events is displayed. Before finals `qualifyCriterionId` is a source of competition events criteria. During finals `finalCriterionId` is a source of competition events criteria. The widget tries to find any competition bet offers matching the first criterion from the list, then moves to the next. Default criteria correspond to **Tournament Position** bet offer for all matches before finals, and to **Third Place** and **Tournament Position** for the finals.
 4. For all matches before finals the widget displays a **Tournament Position** bet offer containing the **Top 2** offer. For the final the **Winner** offer is displayed.
+5. If no betoffers with matching criteria ids are found in the torunament event the widget looks for a matching bet offer in rematch events
 
 ## Build Instructions
 

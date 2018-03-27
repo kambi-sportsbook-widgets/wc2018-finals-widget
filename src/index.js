@@ -24,47 +24,13 @@ coreLibrary
     iconUrl: "https://d1fqgomuxh4f5p.cloudfront.net/tournamentdata/worldcup2018/icons/champions_league.svg",  // string with the icon URL, should have a default if absent
     backgroundUrl: 'https://d1fqgomuxh4f5p.cloudfront.net/tournamentdata/worldcup2018/overview-bw-bg-desktop.jpg', // string with the image to use as background-image
     blendWithOperatorColor: true, // determines if background should be blended with operator color. (Normally not wanted if providing own background image)
-    // // Data for World Cup 2018
-    // fetchData: {
-    //   baseFilter:'/football/world_cup_2018',
-    //   qualifyCriterionId: [ 1004240929 ],
-    //   finalCriterionId: [ 1002978411, 1004240929 ]
-    // },
-    // // Data for World Cup 2018
-    // // Date span for World Cup 2018
-    // fetchDates: {
-    //   quarterFinals: {
-    //     start: '2018-07-06T00:00',
-    //     end: '2018-07-07T23:59'
-    //   },
-    //   semiFinals: {
-    //     start: '2018-07-10T00:00',
-    //     end: '2018-07-11T23:59'
-    //   },
-    //   finals: {
-    //     start: '2018-07-14T00:00'
-    //   }
-    // },
-    // // Date span for World Cup 2018
-
-    // Data for Champions League
     fetchData: {
       baseFilter:'football/champions_league',
       qualifyCriterionId: [ 1001159599 ], // Team to go through from the match
       finalCriterionId: [ 1001221607 ] // match for third place not occuring in this tournament
     },
-    // Data for Champions League
-    // Date span for Champions League
     fetchDates: {
-      // quarterFinals: {},
-      // semiFinals: {},
-      // finals: {
-      //   start: '2018-04-03T00:00',
-      // },
-      quarterFinals: {
-        start: '2018-04-03T00:00',
-        end: '2018-04-11T23:59'
-      },
+      quarterFinals: {},
       semiFinals: {
         start: '2018-04-24T00:00',
         end: '2018-05-02T23:59'
@@ -73,23 +39,6 @@ coreLibrary
         start: '2018-05-26T00:00'
       }
     },
-    // Date span for Champions League
-
-    // // Date span for test purposes to be used with World Cup data
-    // fetchDates: {
-    //   quarterFinals: {
-    //     start: '2018-06-16T00:00',
-    //     end: '2018-06-16T23:59'
-    //   },
-    //   semiFinals: {
-    //     start: '2018-07-10T00:00',
-    //     end: '2018-07-11T23:59'
-    //   },
-    //   finals: {
-    //     start: '2018-07-14T00:00'
-    //   }
-    // }
-    // // Date span for test purposes to be used with World Cup data
   })
   .then(() => {
     return getWCEventData(
