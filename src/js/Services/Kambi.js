@@ -168,7 +168,27 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
           } else {
             // Find the match beetween the same teams
             const rematch = events.find(ev => event.event.homeName === ev.event.awayName && event.event.awayName === ev.event.homeName)
-            tournamentBetOffer = rematch.toQualifyBetOffer
+            tournamentBetOffer = { ...rematch.toQualifyBetOffer }
+            // Swap outcomes order and labels
+            tournamentBetOffer.outcomes = tournamentBetOffer.outcomes
+              .map(outcome => {
+                return {...outcome}
+              }).reverse()
+
+            for (let i = 0; i < tournamentBetOffer.outcomes.length / 2; i++) {
+              const iRev = tournamentBetOffer.outcomes.length - i - 1
+              const tempLabel = tournamentBetOffer.outcomes[iRev].label
+              const tempEnglishLabel = tournamentBetOffer.outcomes[iRev].englishLabel
+              const tempType = tournamentBetOffer.outcomes[iRev].type
+
+              tournamentBetOffer.outcomes[iRev].label = tournamentBetOffer.outcomes[i].label
+              tournamentBetOffer.outcomes[iRev].englishLabel = tournamentBetOffer.outcomes[i].englishLabel
+              tournamentBetOffer.outcomes[iRev].type = tournamentBetOffer.outcomes[i].type
+
+              tournamentBetOffer.outcomes[i].label = tempLabel
+              tournamentBetOffer.outcomes[i].englishLabel = tempEnglishLabel
+              tournamentBetOffer.outcomes[i].type = tempType
+            }
           }
         }
 

@@ -20,7 +20,7 @@ coreLibrary
       1001159926,  // Total goals
       1001642858,  // both teams to score
     ], // array with up to 2 numbers, find out the criterionIds of the mock betoffers to use as default
-    flagBaseUrl: "https://d1fqgomuxh4f5p.cloudfront.net/tournamentdata/worldcup2018/icons",   // string with the base URL, concatenate with the lowecased englishName of the team + ".svg" to generate final URL (replace spaces with _)
+    flagBaseUrl: "",   // string with the base URL, concatenate with the lowecased englishName of the team + ".svg" to generate final URL (replace spaces with _)
     iconUrl: "https://d1fqgomuxh4f5p.cloudfront.net/tournamentdata/worldcup2018/icons/champions_league.svg",  // string with the icon URL, should have a default if absent
     backgroundUrl: 'https://d1fqgomuxh4f5p.cloudfront.net/tournamentdata/worldcup2018/overview-bw-bg-desktop.jpg', // string with the image to use as background-image
     blendWithOperatorColor: true, // determines if background should be blended with operator color. (Normally not wanted if providing own background image)
