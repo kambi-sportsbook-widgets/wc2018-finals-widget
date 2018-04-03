@@ -9,12 +9,32 @@ import styles from "./Participants.scss";
 const WORLD_CUP_2018_ID = 2000075007;
 
 const Participants = ({ event, flagBaseUrl, iconUrl, onClick }) => {
+  const isWorldCup = event.id === WORLD_CUP_2018_ID;
+
+  // Generates country icon url
+  function generateCountryFlagUrl(country) {
+    const normalisedCountryName = country.toLowerCase().replace(/\s/g, "_");
+    return flagBaseUrl ? `${flagBaseUrl}/${normalisedCountryName}.svg` : "";
+  }
+
+  const logoIcon = iconUrl ? (
+    <i
+      className="kw-custom-logo-large-type"
+      style={{
+        backgroundImage: `url("${iconUrl}")`
+      }}
+    />
+  ) : (
+    <i />
+  );
+
   return (
     <div className={styles.participants} onClick={onClick}>
       <div className={styles.team}>
         <h2 className={styles.label}>{event.homeName}</h2>
       </div>
       <div className={styles.logo}>
+        {logoIcon}
         <h3 className={styles.label}>{t("championsLeague").toUpperCase()}</h3>
         <p className={styles.sublabel}>{t("leagueYear").toUpperCase()}</p>
 
