@@ -1,7 +1,7 @@
 {
   "name": "wc2018-finals-widget",
   "description": "Description of wc2018-finals-widget",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "main": "dist/index.js",
   "scripts": {
     "clean": "kambi-widgets-cli clean",
