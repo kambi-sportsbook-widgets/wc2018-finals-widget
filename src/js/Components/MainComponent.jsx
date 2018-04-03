@@ -5,16 +5,18 @@ import EventWidget from "./EventWidget";
 
 class MainComponent extends React.Component {
   render() {
-    const Events = this.props.data.map(event => {
-      return (
-        <EventWidget
-          key={event.event.id}
-          event={event}
-          flagBaseUrl={this.props.flagBaseUrl}
-          iconUrl={this.props.iconUrl}
-        />
-      );
-    });
+    const Events = this.props.data
+      .filter(event => event.betOffers.length > 1)
+      .map(event => {
+        return (
+          <EventWidget
+            key={event.event.id}
+            event={event}
+            flagBaseUrl={this.props.flagBaseUrl}
+            iconUrl={this.props.iconUrl}
+          />
+        );
+      });
 
     return (
       <div>

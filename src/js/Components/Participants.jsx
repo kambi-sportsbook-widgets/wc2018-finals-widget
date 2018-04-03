@@ -1,39 +1,57 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { translationModule } from 'kambi-widget-core-library'
-import DateComponent from './Date'
+import React from "react";
+import PropTypes from "prop-types";
+import { translationModule } from "kambi-widget-core-library";
+import DateComponent from "./Date";
 
-const t = translationModule.getTranslation.bind(translationModule)
-import styles from './Participants.scss'
+const t = translationModule.getTranslation.bind(translationModule);
+import styles from "./Participants.scss";
+
+const WORLD_CUP_2018_ID = 2000075007;
 
 const Participants = ({ event, flagBaseUrl, iconUrl, onClick }) => {
+  const isWorldCup = event.id === WORLD_CUP_2018_ID;
   // Generates country icon url
   function generateCountryFlagUrl(country) {
-    const normalisedCountryName = country.toLowerCase().replace(/\s/g, '_')
-    return flagBaseUrl? `${flagBaseUrl}/${normalisedCountryName}.svg`: ''
+    const normalisedCountryName = country.toLowerCase().replace(/\s/g, "_");
+    return flagBaseUrl ? `${flagBaseUrl}/${normalisedCountryName}.svg` : "";
   }
 
-  const homeFlagIcon = flagBaseUrl?
+  const homeFlagIcon =
+    flagBaseUrl && isWorldCup ? (
+      <i
+        className="kw-custom-logo-large-type"
+        style={{
+          backgroundImage: `url("${generateCountryFlagUrl(
+            event.countriesEnglishNames[0]
+          )}")`
+        }}
+      />
+    ) : (
+      <i />
+    );
+  const awayFlagIcon =
+    flagBaseUrl && isWorldCup ? (
+      <i
+        className="kw-custom-logo-large-type"
+        style={{
+          backgroundImage: `url("${generateCountryFlagUrl(
+            event.countriesEnglishNames[1]
+          )}")`
+        }}
+      />
+    ) : (
+      <i />
+    );
+  const logoIcon = iconUrl ? (
     <i
       className="kw-custom-logo-large-type"
       style={{
-        backgroundImage: `url("${generateCountryFlagUrl(event.countriesEnglishNames[0])}")`,
+        backgroundImage: `url("${iconUrl}")`
       }}
-    />: <i></i>
-  const awayFlagIcon = flagBaseUrl?
-    <i
-      className="kw-custom-logo-large-type"
-      style={{
-        backgroundImage: `url("${generateCountryFlagUrl(event.countriesEnglishNames[1])}")`,
-      }}
-    />: <i></i>
-  const logoIcon = iconUrl?
-  <i
-    className="kw-custom-logo-large-type"
-    style={{
-      backgroundImage: `url("${iconUrl}")`,
-    }}
-  />: <i></i>
+    />
+  ) : (
+    <i />
+  );
 
   return (
     <div className={styles.participants} onClick={onClick}>
@@ -43,8 +61,8 @@ const Participants = ({ event, flagBaseUrl, iconUrl, onClick }) => {
       </div>
       <div className={styles.logo}>
         {logoIcon}
-        <h3 className={styles.label}>{t('championsLeague').toUpperCase()}</h3>
-        <p className={styles.sublabel}>{t('leagueYear').toUpperCase()}</p>
+        <h3 className={styles.label}>{t("championsLeague").toUpperCase()}</h3>
+        <p className={styles.sublabel}>{t("leagueYear").toUpperCase()}</p>
 
         <DateComponent date={event.start} short={true} />
       </div>
@@ -53,14 +71,14 @@ const Participants = ({ event, flagBaseUrl, iconUrl, onClick }) => {
         <h2 className={styles.label}>{event.awayName}</h2>
       </div>
     </div>
-  )
-}
+  );
+};
 
 Participants.propTypes = {
   event: PropTypes.object.isRequired,
   flagBaseUrl: PropTypes.string,
   iconUrl: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
-}
+  onClick: PropTypes.func.isRequired
+};
 
-export default Participants
+export default Participants;
