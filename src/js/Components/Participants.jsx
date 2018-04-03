@@ -10,6 +10,7 @@ const WORLD_CUP_2018_ID = 2000075007;
 
 const Participants = ({ event, flagBaseUrl, iconUrl, onClick }) => {
   const isWorldCup = event.id === WORLD_CUP_2018_ID;
+  console.log(isWorldCup);
   // Generates country icon url
   function generateCountryFlagUrl(country) {
     const normalisedCountryName = country.toLowerCase().replace(/\s/g, "_");
