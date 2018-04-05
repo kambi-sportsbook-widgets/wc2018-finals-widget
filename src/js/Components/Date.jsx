@@ -17,7 +17,7 @@ const pad = function(n) {
  * @param {string} startTime
  */
 const eventTime = (startTime, short) => {
-  const prefix = short ? "Short" : "";
+  const prefix = short ? "Abbr" : "";
   const now = new Date(),
     date = new Date(startTime);
 
@@ -35,8 +35,8 @@ const eventTime = (startTime, short) => {
     return `${soonStr} ${pad(date.getHours())}:${pad(date.getMinutes())}`;
   }
 
-  return `${t("day" + prefix + date.getDay())} ${date.getDate()} ${t(
-    "month" + prefix + date.getMonth()
+  return `${t(`day${date.getDay()}${prefix}`)} ${date.getDate()} ${t(
+    `month${date.getMonth()}${prefix}`
   )} ${pad(date.getHours())}:${pad(date.getMinutes())}`;
 };
 
