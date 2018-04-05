@@ -10,6 +10,7 @@ const WORLD_CUP_2018_ID = 2000075007;
 
 const Participants = ({ event, flagBaseUrl, iconUrl, onClick }) => {
   const isWorldCup = event.id === WORLD_CUP_2018_ID;
+  const currentYear = new Date().getFullYear();
 
   // Generates country icon url
   function generateCountryFlagUrl(country) {
@@ -35,8 +36,8 @@ const Participants = ({ event, flagBaseUrl, iconUrl, onClick }) => {
       </div>
       <div className={styles.logo}>
         {logoIcon}
-        <h3 className={styles.label}>{t("championsLeague").toUpperCase()}</h3>
-        <p className={styles.sublabel}>{t("leagueYear").toUpperCase()}</p>
+        <h3 className={styles.label}>{`Champions League`.toUpperCase()}</h3>
+        <p className={styles.sublabel}>{currentYear}</p>
 
         <DateComponent date={event.start} short={true} />
       </div>
