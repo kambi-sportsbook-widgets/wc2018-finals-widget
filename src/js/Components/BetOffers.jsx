@@ -8,7 +8,7 @@ const BetOffers = ({ event, betOffers }) => {
     <div className={styles['betoffer-container']}>
       {betOffers.map(betOffer => {
         if (betOffer.outcomes && betOffer.outcomes.length) {
-          const mainClass = betOffer.main? ' main': ''
+          const mainClass = betOffer.main ? ' main' : ''
           return (
             <div className={styles.event + mainClass} key={betOffer.id}>
               <span className={styles['betoffer-label']}>
@@ -20,7 +20,12 @@ const BetOffers = ({ event, betOffers }) => {
                     {/* Outcome button component
                                   https://github.com/kambi-sportsbook-widgets/widget-components/blob/master/README.md
                                  */}
-                    <OutcomeButton outcome={outcome} outlineStyle={true} event={event} />
+                    <OutcomeButton
+                      outcome={outcome}
+                      outlineStyle={true}
+                      event={event}
+                      updateOdds={true}
+                    />
                   </div>
                 ))}
               </div>

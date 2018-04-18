@@ -1,0 +1,70 @@
+$animationeasing: ease-in;
+$animationspeed: 1s;
+
+:export {
+  animationspeed: $animationspeed;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slideWrapper {
+  height: 100%;
+  > div {
+    height: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+.slideContainer {
+  display: inline-block;
+  width: 100%;
+}
+
+// Carousel items
+.enterRight {
+  transform: translate3d(100%, 0, 0);
+}
+
+.enterActiveRight {
+  transform: translate3d(0, 0, 0);
+  transition: $animationspeed $animationeasing;
+}
+
+.exitRight {
+  transform: translate3d(-100%, 0, 0);
+}
+.exitActiveRight {
+  transform: translate3d(-200%, 0, 0);
+  transition: $animationspeed $animationeasing;
+}
+
+.enterLeft {
+  transform: translate3d(-100%, 0, 0);
+}
+.enterActiveLeft {
+  transform: translate3d(0, 0, 0);
+  transition: $animationspeed $animationeasing;
+}
+
+.exitLeft {
+  transform: translate3d(-100%, 0, 0);
+}
+.exitActiveLeft {
+  transform: translate3d(0, 0, 0);
+  transition: $animationspeed $animationeasing;
+}
+
+.chevronLeft {
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+.chevronRight {
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
