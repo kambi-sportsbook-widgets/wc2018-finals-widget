@@ -1,8 +1,10 @@
 $animationeasing: ease-in;
-$animationspeed: 1s;
+$animationspeed: 0.5s;
+$slowanimationspeed: 2s;
 
 :export {
   animationspeed: $animationspeed;
+  slowanimationspeed: $slowanimationspeed;
 }
 
 .container {
@@ -28,26 +30,37 @@ $animationspeed: 1s;
 .enterRight {
   transform: translate3d(100%, 0, 0);
 }
-
-.enterActiveRight {
+.enterActiveRight:not(.slowAnimation) {
   transform: translate3d(0, 0, 0);
   transition: $animationspeed $animationeasing;
+}
+.enterActiveRight.slowAnimation {
+  transform: translate3d(0, 0, 0);
+  transition: $slowanimationspeed $animationeasing;
 }
 
 .exitRight {
   transform: translate3d(-100%, 0, 0);
 }
-.exitActiveRight {
+.exitActiveRight:not(.slowAnimation) {
   transform: translate3d(-200%, 0, 0);
   transition: $animationspeed $animationeasing;
+}
+.exitActiveRight.slowAnimation {
+  transform: translate3d(-200%, 0, 0);
+  transition: $slowanimationspeed $animationeasing;
 }
 
 .enterLeft {
   transform: translate3d(-100%, 0, 0);
 }
-.enterActiveLeft {
+.enterActiveLeft:not(.slowAnimation) {
   transform: translate3d(0, 0, 0);
   transition: $animationspeed $animationeasing;
+}
+.enterActiveLeft.slowAnimation {
+  transform: translate3d(0, 0, 0);
+  transition: $slowanimationspeed $animationeasing;
 }
 
 .exitLeft {
@@ -56,6 +69,10 @@ $animationspeed: 1s;
 .exitActiveLeft {
   transform: translate3d(0, 0, 0);
   transition: $animationspeed $animationeasing;
+}
+.exitActiveLeft.slowAnimation {
+  transform: translate3d(0, 0, 0);
+  transition: $slowanimationspeed $animationeasing;
 }
 
 .chevronLeft {

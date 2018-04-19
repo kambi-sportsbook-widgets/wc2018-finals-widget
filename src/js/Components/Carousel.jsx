@@ -5,19 +5,19 @@ import {
   TransitionGroup,
   Transition,
 } from 'react-transition-group'
+import addOneClass from 'dom-helpers/class/addClass'
+import removeOneClass from 'dom-helpers/class/removeClass'
 
 import styles from './Carousel.scss'
-
-const addClass = (node, classes) =>
-  node && classes && classes.split(' ').forEach(c => addOneClass(node, c))
-const removeClass = (node, classes) =>
-  node && classes && classes.split(' ').forEach(c => removeOneClass(node, c))
 
 export default class Carousel extends Component {
   static defaultProps = {}
 
   static propTypes = {
     slides: PropTypes.node.isRequired,
+  }
+  isIE11() {
+    return navigator.appName.indexOf('Trident') !== -1
   }
 
   constructor(props) {
@@ -27,7 +27,11 @@ export default class Carousel extends Component {
       animationDirection: 'right',
     }
     this.blockInteraction = false
-    this.animationSpeed = parseFloat(styles.animationspeed) * 1000
+    if (this.isIE11()) {
+      this.animationSpeed = parseFloat(styles.slowanimationspeed) * 1000
+    } else {
+      this.animationSpeed = parseFloat(styles.animationspeed) * 1000
+    }
   }
 
   goToSlide(idx, animationDirection) {
@@ -41,7 +45,7 @@ export default class Carousel extends Component {
     })
     setTimeout(() => {
       this.blockInteraction = false
-    }, this.animationSpeed + 100)
+    }, this.animationSpeed + 200)
   }
 
   nextSlide = () => {
@@ -107,6 +111,10 @@ export default class Carousel extends Component {
           ? styles.exitActiveRight
           : styles.exitActiveLeft,
       }
+      let containerClasses = styles.slideContainer
+      if (this.isIE11()) {
+        containerClasses += ' ' + styles.slowAnimation
+      }
       return (
         <CSSTransition
           in={index === activeIndex}
@@ -117,19 +125,27 @@ export default class Carousel extends Component {
           onExiting={node => {
             const rightAnimation = this.state.animationDirection === 'right'
             if (rightAnimation) {
-              node.classList.remove(styles.exitLeft)
-              node.classList.remove(styles.exitActiveLeft)
-              node.classList.add(styles.exitRight)
-              node.classList.add(styles.exitActiveRight)
+              removeOneClass(node, styles.exitLeft)
+              removeOneClass(node, styles.exitActiveLeft)
+              addOneClass(node, styles.exitRight)
+              addOneClass(node, styles.exitActiveRight)
+              // node.classList.remove(styles.exitLeft)
+              // node.classList.remove(styles.exitActiveLeft)
+              // node.classList.add(styles.exitRight)
+              // node.classList.add(styles.exitActiveRight)
             } else {
-              node.classList.remove(styles.exitRight)
-              node.classList.remove(styles.exitActiveRight)
-              node.classList.add(styles.exitLeft)
-              node.classList.add(styles.exitActiveLeft)
+              removeOneClass(node, styles.exitRight)
+              removeOneClass(node, styles.exitActiveRight)
+              addOneClass(node, styles.exitLeft)
+              addOneClass(node, styles.exitActiveLeft)
+              // node.classList.remove(styles.exitRight)
+              // node.classList.remove(styles.exitActiveRight)
+              // node.classList.add(styles.exitLeft)
+              // node.classList.add(styles.exitActiveLeft)
             }
           }}
         >
-          <div className={styles.slideContainer}>{slide}</div>
+          <div className={containerClasses}>{slide}</div>
         </CSSTransition>
       )
     })

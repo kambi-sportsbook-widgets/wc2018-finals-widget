@@ -10,7 +10,12 @@
     "test": "kambi-widgets-cli test",
     "precommit": "lint-staged"
   },
+  "useRealReact": {
+    "development": true,
+    "production": true
+  },
   "dependencies": {
+    "dom-helpers": "^3.3.1",
     "kambi-widget-components": "^1.19.0",
     "kambi-widget-core-library": "^4.1.0",
     "react-transition-group": "^2.3.1"
