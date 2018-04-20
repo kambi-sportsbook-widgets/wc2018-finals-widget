@@ -10,7 +10,7 @@ import BetOffers from "./BetOffers";
  * @param {Object} event
  */
 const navigateToEvent = event => {
-  if (event.event.liveBetOffers) {
+  if (event.event.openForLiveBetting === true) {
     // Navigate to live event
     // http://kambi-sportsbook-widgets.github.io/widget-core-library/module-widgetModule.html#.navigateToLiveEvent__anchor
     widgetModule.navigateToLiveEvent(event.event.id);
