@@ -57,7 +57,6 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
             eventType = "semiFinals";
           } else if (
             // Finals dates span with padding
-            now < new Date(dates.finals.end) &&
             new Date(dates.finals.start) < new Date(game.event.start)
           ) {
             finals.push(game);
