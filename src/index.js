@@ -43,6 +43,11 @@ coreLibrary
     },
   })
   .then(() => {
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //// THIS IS TEMPORARY TO REMOVE IT AS WE HAVE A BUG WITH THE OUTCOME BUTTONS IN THE SYSTEM == REMOVE LATER!!!
+    throw new Error('widget temporarily removed')
+    return
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
     return getWCEventData(
       coreLibrary.args.additionalBetOffersCriterionIds,
       coreLibrary.args.fetchData,
