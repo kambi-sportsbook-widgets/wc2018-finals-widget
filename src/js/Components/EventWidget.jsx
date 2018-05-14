@@ -55,9 +55,9 @@ class EventWidget extends React.Component {
   };
 
   render() {
-    let sliceIndex = this.props.event.betOffers.length > 2 ? 2 : 1;
-    const betOffersLeft = this.props.event.betOffers.slice(0, sliceIndex);
-    const betOffersRight = this.props.event.betOffers.slice(sliceIndex);
+    let sliceIndex = this.props.event.betOffers.length > 2 ? 2 : 1
+    const betOffersLeft = this.props.event.betOffers.slice(0, sliceIndex)
+    const betOffersRight = this.props.event.betOffers.slice(sliceIndex)
 
     return (
       <div>

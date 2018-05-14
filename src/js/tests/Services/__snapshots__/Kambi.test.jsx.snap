@@ -45,6 +45,7 @@ Array [
       "state": "NOT_STARTED",
       "type": "ET_MATCH",
     },
+    "toQualifyBetOffer": undefined,
   },
 ]
 `;

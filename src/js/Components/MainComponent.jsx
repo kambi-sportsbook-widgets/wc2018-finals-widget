@@ -1,20 +1,23 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { BlendedBackground, Carousel } from "kambi-widget-components";
-import EventWidget from "./EventWidget";
+import React from 'react'
+import PropTypes from 'prop-types'
+import { BlendedBackground } from 'kambi-widget-components'
+import EventWidget from './EventWidget'
+import Carousel from './Carousel'
 
 class MainComponent extends React.Component {
   render() {
-    const Events = this.props.data.map(event => {
-      return (
-        <EventWidget
-          key={event.event.id}
-          event={event}
-          flagBaseUrl={this.props.flagBaseUrl}
-          iconUrl={this.props.iconUrl}
-        />
-      );
-    });
+    const Events = this.props.data
+      .filter(event => event.betOffers.length > 1)
+      .map(event => {
+        return (
+          <EventWidget
+            key={event.event.id}
+            event={event}
+            flagBaseUrl={this.props.flagBaseUrl}
+            iconUrl={this.props.iconUrl}
+          />
+        )
+      })
 
     return (
       <div>
@@ -26,11 +29,9 @@ class MainComponent extends React.Component {
           backgroundUrl={this.props.backgroundUrl}
           blendWithOperatorColor={this.props.blendWithOperatorColor}
         />
-        <Carousel height="100%" showIndicators={false}>
-          {Events}
-        </Carousel>
+        <Carousel slides={Events} />
       </div>
-    );
+    )
   }
 }
 
@@ -39,7 +40,7 @@ MainComponent.propTypes = {
   backgroundUrl: PropTypes.string.isRequired,
   blendWithOperatorColor: PropTypes.bool.isRequired,
   flagBaseUrl: PropTypes.string,
-  iconUrl: PropTypes.string
-};
+  iconUrl: PropTypes.string,
+}
 
-export default MainComponent;
+export default MainComponent

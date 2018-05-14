@@ -1,7 +1,7 @@
 {
    "name": "wc2018-finals-widget",
    "description": "Description of wc2018-finals-widget",
-   "version": "0.1.1",
+   "version": "1.3.1",
    "main": "dist/index.js",
    "scripts": {
       "clean": "kambi-widgets-cli clean",
@@ -9,16 +9,42 @@
       "start:embedded": "kambi-widgets-cli start-embedded",
       "build": "kambi-widgets-cli build",
       "build:embedded": "kambi-widgets-cli build-embedded",
-      "test": "kambi-widgets-cli test"
+      "test": "kambi-widgets-cli test",
+      "precommit": "lint-staged"
+   },
+   "useRealReact": {
+      "development": true,
+      "production": true
    },
    "dependencies": {
+      "dom-helpers": "^3.3.1",
       "kambi-widget-components": "^1.21.1",
-      "kambi-widget-core-library": "^4.6.2"
+      "kambi-widget-core-library": "^4.6.2",
+      "react-transition-group": "^2.3.1"
    },
    "peerDependencies": {
       "prop-types": "x",
       "react": "x",
       "react-dom": "x"
    },
-   "useHttps": true
+   "devDependencies": {
+      "lint-staged": "^6.1.0",
+      "prettier": "^1.10.2"
+   },
+   "devServer": {
+      "https": true
+   },
+   "prettier": {
+      "tabWidth": 2,
+      "printWidth": 80,
+      "semi": false,
+      "singleQuote": true,
+      "trailingComma": "es5"
+   },
+   "lint-staged": {
+      "*.{js,json,css,scss}": [
+         "prettier --write",
+         "git add"
+      ]
+   }
 }

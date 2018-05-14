@@ -24,7 +24,6 @@ coreLibrary
     backgroundUrl:
       "https://d1fqgomuxh4f5p.cloudfront.net/tournamentdata/worldcup2018/overview-bw-bg-desktop.jpg", // string with the image to use as background-image
     blendWithOperatorColor: true, // determines if background should be blended with operator color. (Normally not wanted if providing own background image)
-    // Data for World Cup 2018
     fetchData: {
       baseFilter: "/football/world_cup_2018",
       qualifyCriterionId: [1004240929],

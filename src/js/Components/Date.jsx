@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { translationModule } from 'kambi-widget-core-library'
+import React from "react";
+import PropTypes from "prop-types";
+import { translationModule } from "kambi-widget-core-library";
 
-const t = translationModule.getTranslation.bind(translationModule)
+const t = translationModule.getTranslation.bind(translationModule);
 
 /**
  * Pads with leading 0s to ensure number is two digit.
@@ -49,4 +49,4 @@ DateComponent.propTypes = {
   short: PropTypes.bool,
 }
 
-export default DateComponent
+export default DateComponent;

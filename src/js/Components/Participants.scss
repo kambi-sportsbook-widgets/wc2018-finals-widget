@@ -17,7 +17,7 @@
   justify-content: center;
   flex-basis: 30%;
 
-  :global(.kw-custom-logo-large-type){
+  :global(.kw-custom-logo-large-type) {
     background-position: center;
     background-repeat: no-repeat;
     flex-basis: 30%;
@@ -37,20 +37,22 @@
   margin: 0 1em;
   text-align: center;
 
-  :global(.kw-custom-logo-large-type){
+  :global(.kw-custom-logo-large-type) {
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     flex-basis: 50%;
     height: 70px;
+    min-height: 70px;
   }
 
-  .label, .sublabel {
+  .label,
+  .sublabel {
     margin: 0;
   }
 
   .label {
-    margin-top: .5em;
+    margin-top: 0.5em;
   }
 
   .sublabel {
