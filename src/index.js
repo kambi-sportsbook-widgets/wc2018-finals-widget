@@ -81,6 +81,15 @@ coreLibrary
       }),
       coreLibrary.rootElement
     )
+
+    // unmounts application at root element on widget remove (for embedded mode)
+    const originalOnWidgetRemoved = coreLibrary.args.onWidgetRemoved
+    coreLibrary.args.onWidgetRemoved = err => {
+      ReactDOM.unmountComponentAtNode(coreLibrary.rootElement)
+      if (originalOnWidgetRemoved) {
+        originalOnWidgetRemoved(err)
+      }
+    }
   })
   .catch(error => {
     widgetModule.removeWidget()

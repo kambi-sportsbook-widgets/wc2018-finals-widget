@@ -1,10 +1,6 @@
-import {
-  offeringModule
-  // translationModule
-} from "kambi-widget-core-library";
+import { offeringModule } from 'kambi-widget-core-library'
 
-// const t = translationModule.getTranslation.bind(translationModule)
-
+const getEventData = () => {}
 /*
  * @property additionalBetOffersCriterionIds {Array.<number>} an array containing up to two criterion ids to be displayed in the widget
  * @returns {Promise} promise of a Kambi event object containing only required betoffers
@@ -20,8 +16,8 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
     offeringModule.getEventsByFilter(data.baseFilter + '/all/all/competitions'),
   ])
     .then(responses => {
-      const events = responses[0];
-      const tournamentEvents = responses[1];
+      const events = responses[0]
+      const tournamentEvents = responses[1]
       // Figure out if we have an array of events or a single one
       if (events.events) {
         // get not-started matches only
@@ -45,8 +41,8 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
             new Date(dates.quarterFinals.start) < new Date(game.event.start) &&
             new Date(game.event.start) < new Date(dates.quarterFinals.end)
           ) {
-            quarterFinals.push(game);
-            eventType = "quaterFinals";
+            quarterFinals.push(game)
+            eventType = 'quaterFinals'
           } else if (
             // Finals dates span with padding
             now < new Date(dates.semiFinals.end) &&
@@ -59,14 +55,14 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
             // Finals dates span with padding
             new Date(dates.finals.start) < new Date(game.event.start)
           ) {
-            finals.push(game);
-            eventType = "finals";
+            finals.push(game)
+            eventType = 'finals'
           }
-        });
+        })
 
-        let gamesToLookup;
+        let gamesToLookup
         if (quarterFinals.length > 0) {
-          gamesToLookup = quarterFinals;
+          gamesToLookup = quarterFinals
         } else if (semiFinals.length > 0) {
           gamesToLookup = semiFinals
         } else if (finals.length > 0) {
@@ -75,12 +71,12 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
           throw new Error(
             `No events available for supplied filter: ${data.baseFilter}`,
             events.event
-          );
+          )
         }
         // Prepare games promises
         const promisesMatches = gamesToLookup.map(game => {
-          return offeringModule.getEvent(game.event.id);
-        });
+          return offeringModule.getEvent(game.event.id)
+        })
 
         // Add tournament events promises
         // Filter events based on citerion ids that are selected depending on the stage of the tournament
@@ -96,8 +92,8 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
 
         competitionEventsNum = competitionEvents.length
         const promisesCompetition = competitionEvents.map(event => {
-          return offeringModule.getEvent(event.event.id);
-        });
+          return offeringModule.getEvent(event.event.id)
+        })
 
         // Get all betoffers of all the games
         // http://kambi-sportsbook-widgets.github.io/widget-core-library/module-offeringModule.html#.getLiveEventsByFilter__anchor
@@ -107,7 +103,7 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
       throw new Error(
         `No events available for supplied filter: ${data.baseFilter}`,
         events.event
-      );
+      )
     })
     .then(responses => {
       const events = competitionEventsNum
@@ -124,7 +120,7 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
         )
 
         // Filter bet offers based on criterion ids provided in params
-        let newBetOffers = [];
+        let newBetOffers = []
         // Add main offer
         const mainBetoffer = event.betOffers.find(offer => offer.main)
         if (mainBetoffer) {
@@ -153,18 +149,18 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
 
         // Get bet offers and inject them into the displayed event
         // Offers are being overwritten so only the last event from the criterion id list is actually displayed
-        let tournamentBetOffer;
+        let tournamentBetOffer
         competitionEventData.forEach(competitionEvent => {
           let betOffer
           if (eventType !== 'finals') {
             betOffer = competitionEvent.betOffers.find(offer => {
-              return offer.to === 2;
-            });
+              return offer.to === 2
+            })
             if (!betOffer) {
               betOffer = competitionEvent.betOffers[0]
             }
           } else {
-            betOffer = competitionEvent.betOffers[0];
+            betOffer = competitionEvent.betOffers[0]
           }
 
           const tournamentBetOfferCandidate = Object.assign({}, betOffer)
@@ -174,7 +170,7 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
             }
           )
           if (tournamentBetOfferCandidate.outcomes.length > 0) {
-            tournamentBetOffer = tournamentBetOfferCandidate;
+            tournamentBetOffer = tournamentBetOfferCandidate
           }
         })
 
@@ -231,4 +227,4 @@ const getWCEventData = (additionalBetOffersCriterionIds, data, dates) => {
     })
 }
 
-export default getWCEventData;
+export default getWCEventData
