@@ -20,7 +20,7 @@ class MainComponent extends React.Component {
       })
 
     return (
-      <div>
+      <div style={{ padding: '0 .5rem' }}>
         {/*
          * @property backgroundUrl {String} provides path to backgroundImage
          * @property blendWithOperatorColor {Boolean} determines if background should be blended with operator color. (Normally not wanted if providing own background image)
