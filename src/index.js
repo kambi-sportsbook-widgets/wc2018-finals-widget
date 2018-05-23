@@ -25,7 +25,7 @@ coreLibrary
     blendWithOperatorColor: true, // determines if background should be blended with operator color. (Normally not wanted if providing own background image)
     fetchData: {
       baseFilter: 'football/champions_league',
-      qualifyCriterionId: [1001159599], // Team to go through from the match
+      qualifyCriterionId: [1001159600], // Team to go through from the match
       finalCriterionId: [1001221607], // match for third place not occuring in this tournament
     },
     fetchDates: {
@@ -43,11 +43,6 @@ coreLibrary
     },
   })
   .then(() => {
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //// THIS IS TEMPORARY TO REMOVE IT AS WE HAVE A BUG WITH THE OUTCOME BUTTONS IN THE SYSTEM == REMOVE LATER!!!
-    throw new Error('widget temporarily removed')
-    return
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
     return getWCEventData(
       coreLibrary.args.additionalBetOffersCriterionIds,
       coreLibrary.args.fetchData,
