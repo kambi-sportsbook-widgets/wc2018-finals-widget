@@ -4,13 +4,14 @@
   flex-direction: column;
   justify-content: center;
   max-width: 350px;
+  min-width: 275px;
 }
 
 .event {
   display: flex;
   flex-direction: column;
   position: relative;
-  margin-top: .7em;
+  margin-top: 0.7em;
 }
 
 .outcomes {
@@ -28,7 +29,7 @@
 
 .betoffer-label {
   text-align: left;
-  padding-left: .5em;
+  padding-left: 0.5em;
 }
 
 @media screen and (max-width: 768px) {
