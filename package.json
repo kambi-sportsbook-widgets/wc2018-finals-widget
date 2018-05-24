@@ -18,8 +18,8 @@
    },
    "dependencies": {
       "dom-helpers": "^3.3.1",
-      "kambi-widget-components": "^1.21.1",
-      "kambi-widget-core-library": "^4.6.2",
+      "kambi-widget-components": "^1.21.6",
+      "kambi-widget-core-library": "^4.7.0",
       "react-transition-group": "^2.3.1"
    },
    "peerDependencies": {

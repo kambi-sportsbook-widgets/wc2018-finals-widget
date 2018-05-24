@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { coreLibrary, widgetModule } from 'kambi-widget-core-library'
 import MainComponent from './js/Components/MainComponent'
 
-import getWCEventData from './js/Services/Kambi'
+import getTournamentData from './js/Services/Kambi'
 
 import './scss/app.scss'
 import './index.html'
@@ -30,67 +30,69 @@ coreLibrary
     //   finalCriterionId: [1002978411, 1004240929],
     // },
 
-    filter: '/football/world_cup_2018',
+    // filter: '/football/world_cup_2018',
+    filter: '/football/champions_league',
     criterionIds: {
       topLeftBetOffer: {
         // Full time
-        quarter: [1001159858],
-        semi: [1001159858],
-        final: [1001159858],
-        fallBack: [1001159858],
+        quarter: 1001159858,
+        semi: 1001159858,
+        final: 1001159858,
+        fallback: 1001159858,
       },
       topRightBetOffer: {
         // Total goals
-        quarter: [1001159926],
-        semi: [1001159926],
-        final: [1001159926],
-        fallBack: [1001159926],
+        quarter: 1001159926,
+        semi: 1001159926,
+        final: 1001159926,
+        fallback: 1001159926,
       },
       bottomLeftBetOffer: {
         // Qualify / Win Bronze/ Win the Trophy
-        quarter: [1001159599],
-        semi: [1002978411],
-        final: [1001159600],
-        fallBack: [1001159599],
+        quarter: 1001159599,
+        semi: 1002978411,
+        final: 1001159600,
+        fallback: 1001159599,
       },
       bottomRightBetOffer: {
         // Both teams to score
-        quarter: [1001642858],
-        semi: [1001642858],
-        final: [1001642858],
-        fallBack: [1001642858],
+        quarter: 1001642858,
+        semi: 1001642858,
+        final: 1001642858,
+        fallback: 1001642858,
       },
     },
 
-    // Data for World Cup 2018
     // // Date span for World Cup 2018
     // tournamentDates: {
-    //   quarterFinals: {
-    //     start: '2018-07-06T00:00',
-    //     end: '2018-07-07T23:59'
+    //   quarter: {
+    //     start: '2018-03-06T00:00',
+    //     end: '2018-07-07T23:59',
     //   },
-    //   semiFinals: {
+    //   semi: {
     //     start: '2018-07-10T00:00',
-    //     end: '2018-07-11T23:59'
+    //     end: '2018-07-11T23:59',
     //   },
-    //   finals: {
-    //     start: '2018-07-14T00:00'
-    //   }
+    //   final: {
+    //     start: '2018-07-15T00:00',
+    //     end: '2018-07-15T23:59',
+    //   },
     // },
     // // Date span for World Cup 2018
 
     // Date span for test purposes to be used with World Cup data
     tournamentDates: {
-      quarterFinals: {
-        start: '2018-06-16T00:00',
-        end: '2018-06-16T23:59',
+      quarter: {
+        start: '2018-04-03T00:00',
+        end: '2018-04-12T23:59',
       },
-      semiFinals: {
-        start: '2018-07-10T00:00',
-        end: '2018-07-11T23:59',
+      semi: {
+        start: '2018-04-24T00:00',
+        end: '2018-05-02T23:59',
       },
-      finals: {
-        start: '2018-07-14T00:00',
+      final: {
+        start: '2018-05-26T00:00',
+        end: '2018-05-26T23:59',
       },
     },
     // Date span for test purposes to be used with World Cup data
@@ -104,11 +106,11 @@ coreLibrary
     //   coreLibrary.args.fetchDates
     // )
   })
-  .then(data => {
+  .then(events => {
     // Renders the widget
     ReactDOM.render(
       React.createElement(MainComponent, {
-        data: data,
+        data: events,
         backgroundUrl: coreLibrary.args.backgroundUrl,
         blendWithOperatorColor: coreLibrary.args.blendWithOperatorColor,
         flagBaseUrl: coreLibrary.args.flagBaseUrl,
