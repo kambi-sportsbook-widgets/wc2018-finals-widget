@@ -33,7 +33,7 @@ const BetOffers = ({ event, betOffers, isMobile }) => {
                       outcome={outcome}
                       outlineStyle={true}
                       event={event}
-                      updateOdds={true}
+                      updateOdds={false}
                     />
                   </div>
                 ))}
