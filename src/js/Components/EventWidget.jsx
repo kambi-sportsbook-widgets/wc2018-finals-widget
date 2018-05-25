@@ -82,7 +82,11 @@ class EventWidget extends React.Component {
           }`}
         >
           <BetOffers
-            betOffers={[event.topLeftBetOffer, event.bottomLeftBetOffer]}
+            betOffers={
+              event.bottomLeftBetOffer
+                ? [event.topLeftBetOffer, event.bottomLeftBetOffer]
+                : [event.topLeftBetOffer]
+            } // for pre final testing purposes, the bottomLeftBO is not mandatory
             event={event.event}
             isMobile={this.state.isMobile}
           />

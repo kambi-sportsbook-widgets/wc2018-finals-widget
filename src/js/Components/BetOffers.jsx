@@ -20,7 +20,7 @@ const BetOffers = ({ event, betOffers, isMobile }) => {
               }`}
               key={betOffer.id}
             >
-              <span className={styles.betOfferLabel}>
+              <span className={styles.betofferLabel}>
                 {betOffer.criterion.label}
               </span>
               <div className={styles.outcomes}>
