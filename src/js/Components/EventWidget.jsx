@@ -1,6 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { widgetModule, translationModule } from 'kambi-widget-core-library'
+import {
+  widgetModule,
+  translationModule,
+  coreLibrary,
+} from 'kambi-widget-core-library'
 import styles from './EventWidget.scss'
 import Participants from './Participants'
 import BetOffers from './BetOffers'
@@ -35,23 +39,36 @@ const liveLabel = event => {
   return ''
 }
 
+const BREAKPOINT = 900 // higher than 768 intentionally
+
 class EventWidget extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      isMobile:
+        coreLibrary.rootElement.getBoundingClientRect().width < BREAKPOINT,
+    }
+  }
   /**
    * Called after the component is mounted
    **/
   componentDidMount() {
-    this.adaptWidgetHeight()
-    window.addEventListener('resize', this.adaptWidgetHeight)
+    this.adaptWidgetSize()
+    window.addEventListener('resize', this.adaptWidgetSize)
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.adaptWidgetHeight)
+    window.removeEventListener('resize', this.adaptWidgetSize)
   }
 
-  adaptWidgetHeight = () => {
+  adaptWidgetSize = () => {
     // Adjust widget height
     // http://kambi-sportsbook-widgets.github.io/widget-core-library/module-widgetModule.html#.adaptWidgetHeight__anchor
     widgetModule.adaptWidgetHeight()
+    this.setState({
+      isMobile:
+        coreLibrary.rootElement.getBoundingClientRect().width < BREAKPOINT,
+    })
   }
 
   render() {
@@ -59,21 +76,30 @@ class EventWidget extends React.Component {
 
     return (
       <div>
-        <div className={styles.container}>
+        <div
+          className={`${styles.container} ${
+            this.state.isMobile ? styles.containerMobile : ''
+          }`}
+        >
           <BetOffers
             betOffers={[event.topLeftBetOffer, event.bottomLeftBetOffer]}
-            event={event}
+            event={event.event}
+            isMobile={this.state.isMobile}
           />
           <Participants
-            event={event}
+            event={event.event}
             flagBaseUrl={this.props.flagBaseUrl}
             iconUrl={this.props.iconUrl}
             onClick={navigateToEvent.bind(null, this.props.event)}
+            isMobile={this.state.isMobile}
           />
-          <BetOffers
-            betOffers={[event.topRightBetOffer, event.bottomRightBetOffer]}
-            event={event}
-          />
+          {!this.state.isMobile && (
+            <BetOffers
+              betOffers={[event.topRightBetOffer, event.bottomRightBetOffer]}
+              event={event.event}
+              isMobile={this.state.isMobile}
+            />
+          )}
         </div>
       </div>
     )

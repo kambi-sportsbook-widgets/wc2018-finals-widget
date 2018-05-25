@@ -3,15 +3,24 @@ import PropTypes from 'prop-types'
 import { OutcomeButton } from 'kambi-widget-components'
 import styles from './BetOffers.scss'
 
-const BetOffers = ({ event, betOffers }) => {
+const BetOffers = ({ event, betOffers, isMobile }) => {
   return (
-    <div className={styles['betoffer-container']}>
+    <div
+      className={`${styles.betofferContainer} ${
+        isMobile ? styles.betofferContainerMobile : ''
+      }`}
+    >
       {betOffers.map(betOffer => {
         if (betOffer.outcomes && betOffer.outcomes.length) {
           const mainClass = betOffer.main ? ' main' : ''
           return (
-            <div className={styles.event + mainClass} key={betOffer.id}>
-              <span className={styles['betoffer-label']}>
+            <div
+              className={`${styles.event} ${mainClass} ${
+                isMobile ? styles.eventMobile : ''
+              }`}
+              key={betOffer.id}
+            >
+              <span className={styles.betOfferLabel}>
                 {betOffer.criterion.label}
               </span>
               <div className={styles.outcomes}>

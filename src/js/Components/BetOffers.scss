@@ -1,10 +1,14 @@
-.betoffer-container {
+.betofferContainer {
   flex-basis: 35%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   max-width: 350px;
   min-width: 275px;
+
+  &Mobile {
+    flex-basis: 100%;
+  }
 }
 
 .event {
@@ -12,6 +16,10 @@
   flex-direction: column;
   position: relative;
   margin-top: 0.7em;
+
+  &Mobile:not(:global(.main)) {
+    display: none;
+  }
 }
 
 .outcomes {
@@ -32,12 +40,12 @@
   padding-left: 0.5em;
 }
 
-@media screen and (max-width: 768px) {
-  .betoffer-container {
-    flex-basis: 100%;
-  }
+// @media screen and (max-width: 768px) {
+//   .betoffer-container {
+//     flex-basis: 100%;
+//   }
 
-  .event:not(:global(.main)) {
-    display: none;
-  }
-}
+//   .event:not(:global(.main)) {
+//     display: none;
+//   }
+// }
