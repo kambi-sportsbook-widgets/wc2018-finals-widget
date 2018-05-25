@@ -26,8 +26,10 @@
 
   .label {
     text-align: center;
-    font-size: 130%;
+    font-size: 1rem;
     font-weight: 500;
+    white-space: pre-wrap;
+    word-wrap: break-word;
   }
 }
 
@@ -54,10 +56,11 @@
 
   .label {
     margin-top: 0.5em;
+    font-size: 0.8rem;
   }
 
   .sublabel {
-    font-size: 90%;
+    font-size: 0.8rem;
   }
 }
 
