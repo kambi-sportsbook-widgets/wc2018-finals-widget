@@ -18,25 +18,21 @@ Arguments and their default values:
   "filter": "/football/world_cup_2018",
   "criterionIds": {
       "topLeftBetOffer": {
-        `// Full time`
         "knockout": 1001159858,
         "bronze": 1001159858,
         "final": 1001159858,
       },
       "topRightBetOffer": {
-        `// Total goals`
         "knockout": 1001159926,
         "bronze": 1001159926,
         "final": 1001159926,
       },
       "bottomLeftBetOffer": {
-        `// Team to go through / Win bronze / Win the Trophy`
         "knockout": 1001159599,
         "bronze": 1002978411,
         "final": 1001159600,
       },
       "bottomRightBetOffer": {
-        `// Both teams to score`
         "knockout": 1001642858,
         "bronze": 1001642858,
         "final": 1001642858,
@@ -66,6 +62,11 @@ Arguments and their default values:
 5.  `blendWithOperatorColor` - boolean - should the background be covered with a colored overlay
 6.  `filter` - string - filter path to the tournament
 7.  criterionIds - Object - object containing criterion ids for the 4 areas of the widget, based on final type
+
+* `topLeftBetOffer` - Full time
+* `topRightBetOffer` - Total goals
+* `bottomLeftBetOffer` - Team to go through / Win bronze / Win the trophy
+* `bottomRightBetOffer` - Both teams to score
 
 8.  `tournamentDates` - Object - containing information regarding date spans of tournament stages
     1.  `<stage-name>{ knockout | semiFinals | finals }`
