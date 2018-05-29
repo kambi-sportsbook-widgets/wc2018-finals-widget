@@ -2,19 +2,19 @@
 
 exports[`BetOffers DOM rendering renders correctly with empty props 1`] = `
 <div
-  className="betoffer-container"
+  className="betofferContainer "
 />
 `;
 
 exports[`BetOffers DOM rendering renders correctly with example props 1`] = `
 <div
-  className="betoffer-container"
+  className="betofferContainer "
 >
   <div
-    className="event main"
+    className="event  main "
   >
     <span
-      className="betoffer-label"
+      className="betofferLabel"
     >
       Some label 1
     </span>
@@ -25,54 +25,66 @@ exports[`BetOffers DOM rendering renders correctly with example props 1`] = `
         className="outcome"
       >
         <OutcomeButton
+          betslipDefaultStake={null}
+          betslipTrackingName={null}
+          betslipUpdateMode={null}
           event={Object {}}
           label={true}
+          onSelection={null}
           outcome={
             Object {
               "id": 1,
             }
           }
           outlineStyle={true}
-          updateOdds={true}
+          updateOdds={false}
         />
       </div>
       <div
         className="outcome"
       >
         <OutcomeButton
+          betslipDefaultStake={null}
+          betslipTrackingName={null}
+          betslipUpdateMode={null}
           event={Object {}}
           label={true}
+          onSelection={null}
           outcome={
             Object {
               "id": 2,
             }
           }
           outlineStyle={true}
-          updateOdds={true}
+          updateOdds={false}
         />
       </div>
       <div
         className="outcome"
       >
         <OutcomeButton
+          betslipDefaultStake={null}
+          betslipTrackingName={null}
+          betslipUpdateMode={null}
           event={Object {}}
           label={true}
+          onSelection={null}
           outcome={
             Object {
               "id": 3,
             }
           }
           outlineStyle={true}
-          updateOdds={true}
+          updateOdds={false}
         />
       </div>
     </div>
   </div>
   <div
-    className="event"
+    className="event  "
   >
     <span
-      className="betoffer-label"
+      className="betofferLabel"
     >
       Some label 2
     </span>
@@ -83,54 +95,66 @@ exports[`BetOffers DOM rendering renders correctly with example props 1`] = `
         className="outcome"
       >
         <OutcomeButton
+          betslipDefaultStake={null}
+          betslipTrackingName={null}
+          betslipUpdateMode={null}
           event={Object {}}
           label={true}
+          onSelection={null}
           outcome={
             Object {
               "id": 4,
             }
           }
           outlineStyle={true}
-          updateOdds={true}
+          updateOdds={false}
         />
       </div>
       <div
         className="outcome"
       >
         <OutcomeButton
+          betslipDefaultStake={null}
+          betslipTrackingName={null}
+          betslipUpdateMode={null}
           event={Object {}}
           label={true}
+          onSelection={null}
           outcome={
             Object {
               "id": 5,
             }
           }
           outlineStyle={true}
-          updateOdds={true}
+          updateOdds={false}
         />
       </div>
       <div
         className="outcome"
       >
         <OutcomeButton
+          betslipDefaultStake={null}
+          betslipTrackingName={null}
+          betslipUpdateMode={null}
           event={Object {}}
           label={true}
+          onSelection={null}
           outcome={
             Object {
               "id": 6,
             }
           }
           outlineStyle={true}
-          updateOdds={true}
+          updateOdds={false}
         />
       </div>
     </div>
   </div>
   <div
-    className="event"
+    className="event  "
   >
     <span
-      className="betoffer-label"
+      className="betofferLabel"
     >
       Some label 3
     </span>
@@ -141,45 +165,57 @@ exports[`BetOffers DOM rendering renders correctly with example props 1`] = `
         className="outcome"
       >
         <OutcomeButton
+          betslipDefaultStake={null}
+          betslipTrackingName={null}
+          betslipUpdateMode={null}
           event={Object {}}
           label={true}
+          onSelection={null}
           outcome={
             Object {
               "id": 7,
             }
           }
           outlineStyle={true}
-          updateOdds={true}
+          updateOdds={false}
         />
       </div>
       <div
         className="outcome"
       >
         <OutcomeButton
+          betslipDefaultStake={null}
+          betslipTrackingName={null}
+          betslipUpdateMode={null}
           event={Object {}}
           label={true}
+          onSelection={null}
           outcome={
             Object {
               "id": 8,
             }
           }
           outlineStyle={true}
-          updateOdds={true}
+          updateOdds={false}
         />
       </div>
       <div
         className="outcome"
       >
         <OutcomeButton
+          betslipDefaultStake={null}
+          betslipTrackingName={null}
+          betslipUpdateMode={null}
           event={Object {}}
           label={true}
+          onSelection={null}
           outcome={
             Object {
               "id": 9,
             }
           }
           outlineStyle={true}
-          updateOdds={true}
+          updateOdds={false}
         />
       </div>
     </div>

@@ -2,14 +2,9 @@ import { offeringModule } from 'kambi-widget-core-library'
 
 const getTournamentData = (filter, criterionIds, dateRanges) => {
   let finalType
-  let tournamentCompetitions
 
-  // fetch filtered events and outrights
-  const tournamentRequests = [
-    offeringModule.getEventsByFilter(filter), // tournament matches
-    offeringModule.getEventsByFilter(`${filter}/all/all/competitions`), // tournament competitions (e.g. golden boot, tournament winner etc.)
-  ]
-  return Promise.all(tournamentRequests)
+  return offeringModule
+    .getEventsByFilter(filter)
     .then(tournamentData => {
       if (tournamentData == null) {
         throw new Error(
@@ -17,8 +12,7 @@ const getTournamentData = (filter, criterionIds, dateRanges) => {
         )
       }
 
-      const tournamentEvents = tournamentData[0].events
-      tournamentCompetitions = tournamentData[1].events
+      const tournamentEvents = tournamentData.events
 
       // filter events by date range
       const now = new Date()
