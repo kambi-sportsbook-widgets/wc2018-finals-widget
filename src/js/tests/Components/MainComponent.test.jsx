@@ -5,13 +5,12 @@ import MainComponent from '../../Components/MainComponent'
 let renderer
 const emptyData = []
 const exampleData = [
-  { event: { id: 1 } },
-  { event: { id: 2 } },
-  { event: { id: 3 } },
+  { event: { id: 1, betOffers: [] } },
+  { event: { id: 2, betOffers: [] } },
+  { event: { id: 3, betOffers: [] } },
 ]
 
 describe('MainComponent DOM rendering', () => {
-
   beforeEach(() => {
     renderer = new ReactShallowRenderer()
   })
@@ -25,8 +24,7 @@ describe('MainComponent DOM rendering', () => {
           blendWithOperatorColor={true}
         />
       )
-    )
-    .toMatchSnapshot()
+    ).toMatchSnapshot()
   })
 
   it('renders correctly with example data', () => {
@@ -38,7 +36,6 @@ describe('MainComponent DOM rendering', () => {
           blendWithOperatorColor={true}
         />
       )
-    )
-    .toMatchSnapshot()
+    ).toMatchSnapshot()
   })
 })

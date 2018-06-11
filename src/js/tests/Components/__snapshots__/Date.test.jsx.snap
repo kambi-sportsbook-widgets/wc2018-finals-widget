@@ -2,11 +2,6 @@
 
 exports[`Date DOM rendering renders correctly with example props 1`] = `
 <p>
-  day4 
-  14 
-  month5 
-  17
-  :
-  00
+  Translated day4 14 Translated month5 17:00
 </p>
 `;

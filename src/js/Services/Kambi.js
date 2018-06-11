@@ -57,7 +57,7 @@ const getTournamentData = (filter, criterionIds, dateRanges) => {
       }
 
       // set fulltime (topLeft) and goalline (topRight) betOffers
-      const eventsWithInitialOffers = filteredEvents.map(event => {
+      const eventsWithInitialOffers = filteredEvents.filter(event => {
         event.betOffers.forEach(betOffer => {
           if (
             betOffer.criterion.id === criterionIds.topLeftBetOffer[finalType]
@@ -70,12 +70,9 @@ const getTournamentData = (filter, criterionIds, dateRanges) => {
           }
         })
         if (!event.topLeftBetOffer || !event.topRightBetOffer) {
-          throw new Error(
-            'Could not find a matching betOffer from supplied criterionID'
-          )
-          return
+          console.error('could not find matching betoffers for event:', event)
         }
-        return event
+        return event.topLeftBetOffer && event.topRightBetOffer
       })
 
       return Promise.all([
@@ -96,7 +93,7 @@ const getTournamentData = (filter, criterionIds, dateRanges) => {
 
       // go through each final event and find remaining betOffers from supplied criterion ids
       // append these to the eventsWithInitialOffers based on idx position
-      const eventsWithAllBetOffers = eventsWithInitialOffers.map(
+      const eventsWithAllBetOffers = eventsWithInitialOffers.filter(
         (event, idx) => {
           const {
             topLeftBetOffer,
@@ -135,14 +132,11 @@ const getTournamentData = (filter, criterionIds, dateRanges) => {
 
           // return if any of the offers are missing
           if (!event.bottomRightBetOffer) {
-            throw new Error(
-              'Could not find a matching betOffer from supplied criterionID'
-            )
-            return
+            console.error('could not find betoffers for event:', event)
           }
 
           // if all betOffers found return event with appended offers
-          return event
+          return event.bottomRightBetOffer
         }
       )
 

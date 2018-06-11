@@ -2,7 +2,7 @@
 
 exports[`Participants DOM rendering renders correctly with an example event 1`] = `
 <div
-  className="participants"
+  className="participants "
   onClick={[Function]}
 >
   <div
@@ -22,12 +22,12 @@ exports[`Participants DOM rendering renders correctly with an example event 1`] 
     <h3
       className="label"
     >
-      CHAMPIONSLEAGUE
+      TRANSLATED WC2018
     </h3>
     <p
       className="sublabel"
     >
-      LEAGUEYEAR
+      TRANSLATED RUSSIA
     </p>
     <DateComponent
       date={1528988400000}
