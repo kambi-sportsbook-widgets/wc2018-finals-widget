@@ -14,7 +14,6 @@ Arguments and their default values:
   "flagBaseUrl": "https://d1fqgomuxh4f5p.cloudfront.net/tournamentdata/worldcup2018/icons",
   "iconUrl": "https://d1fqgomuxh4f5p.cloudfront.net/tournamentdata/worldcup2018/icons/champions_league.svg",
   "backgroundUrl": "https://d1fqgomuxh4f5p.cloudfront.net/tournamentdata/worldcup2018/overview-bw-bg-desktop.jpg",
-  "blendWithOperatorColor": true,
   "filter": "/football/world_cup_2018",
   "criterionIds": {
       "topLeftBetOffer": {
@@ -63,10 +62,10 @@ Arguments and their default values:
 6.  `filter` - string - filter path to the tournament
 7.  criterionIds - Object - object containing criterion ids for the 4 areas of the widget, based on final type
 
-* `topLeftBetOffer` - Full time
-* `topRightBetOffer` - Total goals
-* `bottomLeftBetOffer` - Team to go through / Win bronze / Win the trophy
-* `bottomRightBetOffer` - Both teams to score
+- `topLeftBetOffer` - Full time
+- `topRightBetOffer` - Total goals
+- `bottomLeftBetOffer` - Team to go through / Win bronze / Win the trophy
+- `bottomRightBetOffer` - Both teams to score
 
 8.  `tournamentDates` - Object - containing information regarding date spans of tournament stages
     1.  `<stage-name>{ knockout | semiFinals | finals }`

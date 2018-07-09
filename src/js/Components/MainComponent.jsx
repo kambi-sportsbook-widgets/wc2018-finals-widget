@@ -27,7 +27,10 @@ class MainComponent extends React.Component {
         */}
         <BlendedBackground
           backgroundUrl={this.props.backgroundUrl}
-          blendWithOperatorColor={this.props.blendWithOperatorColor}
+          blendWithOperatorColor={
+            this.props.backgroundUrl ===
+            'https://d1fqgomuxh4f5p.cloudfront.net/tournamentdata/worldcup2018/overview-bw-bg-desktop.jpg'
+          }
         />
         <Carousel slides={Events} />
       </div>
@@ -38,7 +41,6 @@ class MainComponent extends React.Component {
 MainComponent.propTypes = {
   data: PropTypes.array.isRequired,
   backgroundUrl: PropTypes.string.isRequired,
-  blendWithOperatorColor: PropTypes.bool.isRequired,
   flagBaseUrl: PropTypes.string,
   iconUrl: PropTypes.string,
 }

@@ -19,7 +19,6 @@ coreLibrary
       'https://d1fqgomuxh4f5p.cloudfront.net/tournamentdata/worldcup2018/icons/world_cup_2018.svg', // string with the icon URL, should have a default if absent
     backgroundUrl:
       'https://d1fqgomuxh4f5p.cloudfront.net/tournamentdata/worldcup2018/overview-bw-bg-desktop.jpg', // string with the image to use as background-image
-    blendWithOperatorColor: true, // determines if background should be blended with operator color. (Normally not wanted if providing own background image)
 
     filter: '/football/world_cup_2018',
     criterionIds: {
