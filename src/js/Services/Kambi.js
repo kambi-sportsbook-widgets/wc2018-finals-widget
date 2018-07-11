@@ -42,7 +42,7 @@ const getTournamentData = (filter, criterionIds, dateRanges) => {
 
         return (
           eventStartTime > finalStartTime &&
-          eventStartTime < finalEndTime &&
+          // eventStartTime < finalEndTime && // removed for final
           eventNotStarted &&
           eventHasBetOffers
         )
@@ -107,7 +107,8 @@ const getTournamentData = (filter, criterionIds, dateRanges) => {
           finalEvents[idx].betOffers.forEach(betOffer => {
             if (
               betOffer.criterion.id ===
-              criterionIds.bottomLeftBetOffer[finalType]
+                criterionIds.bottomLeftBetOffer[finalType] ||
+              betOffer.criterion.id === criterionIds.bottomLeftBetOffer['final'] // hardcode for final as it should be shown at the same time as bronze match
             ) {
               event.bottomLeftBetOffer = betOffer
             } else if (
@@ -143,7 +144,7 @@ const getTournamentData = (filter, criterionIds, dateRanges) => {
       const now = new Date()
       // Sort by starting date
       const eventsByStart = eventsWithAllBetOffers.sort((a, b) => {
-        if (now >= new Date('2018-07-12T00:00')) {
+        if (now >= new Date('2018-07-11T00:00')) {
           return new Date(b.event.start) - new Date(a.event.start)
         } else {
           return new Date(a.event.start) - new Date(b.event.start)

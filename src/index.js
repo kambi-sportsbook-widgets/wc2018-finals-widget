@@ -52,14 +52,14 @@ coreLibrary
     tournamentDates: {
       knockout: {
         start: '2018-03-30T00:00', ////// THIS DATE IS SET TOO EARLY FOR PRE FINAL TESTING PURPOSES
-        end: '2018-07-11T23:59',
+        end: '2018-07-10T23:59',
       },
       bronze: {
-        start: '2018-07-12T00:00',
+        start: '2018-07-11T00:00',
         end: '2018-07-14T23:59',
       },
       final: {
-        start: '2018-07-12T00:00',
+        start: '2018-07-11T00:00',
         end: '2018-07-15T23:59',
       },
     },
